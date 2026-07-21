@@ -24,7 +24,7 @@ export function PromoBanner() {
           SIGNAL BOOST — SIGN UP FOR PREMIUM CREDIT PACKS
         </span>
         <span className="group-hover:underline sm:hidden">PREMIUM CREDIT SIGNAL</span>
-        <span className="inline-flex items-center gap-1 rounded-sm border border-white/20 bg-black/25 px-2.5 py-0.5 text-[10px] font-bold tracking-widest text-white">
+        <span className="inline-flex items-center gap-1 rounded-2xl border border-white/20 bg-black/25 px-2.5 py-0.5 text-[10px] font-bold tracking-widest text-white">
           UPLINK
         </span>
       </Link>
@@ -35,7 +35,7 @@ export function PromoBanner() {
           localStorage.setItem(STORAGE_KEY, "1");
           setDismissed(true);
         }}
-        className="absolute right-3 top-1/2 -translate-y-1/2 rounded-sm p-1 text-primary-foreground/70 transition-colors hover:bg-black/15 hover:text-primary-foreground"
+        className="absolute right-3 top-1/2 -translate-y-1/2 rounded-2xl p-1 text-primary-foreground/70 transition-colors hover:bg-black/15 hover:text-primary-foreground"
       >
         <X className="h-4 w-4" />
       </button>

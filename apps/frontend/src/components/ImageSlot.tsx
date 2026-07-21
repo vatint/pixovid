@@ -23,7 +23,7 @@ export function ImageSlot({ file, label, onPick, onClear, aspectClass = "aspect-
   );
 
   return (
-    <div className={cn("relative overflow-hidden rounded-xl border border-white/10 bg-white/[0.02]", aspectClass)}>
+    <div className={cn("relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.02]", aspectClass)}>
       {url ? (
         <>
           <img src={url} alt={label} className="h-full w-full object-cover" />

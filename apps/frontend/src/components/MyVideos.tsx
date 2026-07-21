@@ -43,7 +43,7 @@ function VideoCard({ video, onOpen }: { video: Video; onOpen: () => void }) {
   return (
     <button
       onClick={onOpen}
-      className="group flex flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-card text-left transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl hover:shadow-black/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+      className="group flex flex-col overflow-hidden rounded-3xl border border-white/[0.08] bg-card text-left transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl hover:shadow-black/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
     >
       <div className="relative aspect-video overflow-hidden bg-black/40">
         {done ? (
@@ -146,7 +146,7 @@ function VideoModal({ video, onClose }: { video: Video | null; onClose: () => vo
               <p className="text-sm text-muted-foreground">{video.prompt}</p>
 
               {video.status === "FAILED" && video.error && (
-                <details className="rounded-lg border border-white/10 bg-white/[0.02] p-3 text-xs text-muted-foreground">
+                <details className="rounded-3xl border border-white/10 bg-white/[0.02] p-3 text-xs text-muted-foreground">
                   <summary className="cursor-pointer select-none font-medium text-foreground">
                     Technical details
                   </summary>
@@ -157,7 +157,7 @@ function VideoModal({ video, onClose }: { video: Video | null; onClose: () => vo
               )}
 
               {video.status === "COMPLETED" && video.videoUrl && (
-                <Button asChild className="w-fit rounded-xl">
+                <Button asChild className="w-fit rounded-full">
                   <a href={video.videoUrl} download={`video-${video.id}.mp4`}>
                     <Download className="h-4 w-4" /> Download
                   </a>

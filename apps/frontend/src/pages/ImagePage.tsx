@@ -24,7 +24,7 @@ function Step({
 }) {
   return (
     <div>
-      <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.02]">
+      <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-3xl border border-white/[0.08] bg-white/[0.02]">
         <span className="absolute left-3 top-3 flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
           {badge}
         </span>
@@ -69,7 +69,7 @@ function IntroPanel() {
             {["nano-banana", "flux.2", "seedream", "more…"].map((m) => (
               <span
                 key={m}
-                className="rounded-lg border border-white/10 bg-white/[0.03] px-2 py-3 text-center text-xs font-medium text-muted-foreground"
+                className="rounded-3xl border border-white/10 bg-white/[0.03] px-2 py-3 text-center text-xs font-medium text-muted-foreground"
               >
                 {m}
               </span>
@@ -83,10 +83,10 @@ function IntroPanel() {
           description="Hit Generate to render — it lands in History."
         >
           <div className="grid h-full w-full grid-cols-2 gap-1 p-1">
-            <img src="/showcase/stills/img-2.jpg" alt="" className="h-full w-full rounded-lg object-cover" />
-            <img src="/showcase/stills/img-3.jpg" alt="" className="h-full w-full rounded-lg object-cover" />
-            <img src="/showcase/stills/img-4.jpg" alt="" className="h-full w-full rounded-lg object-cover" />
-            <img src="/showcase/stills/img-1.jpg" alt="" className="h-full w-full rounded-lg object-cover" />
+            <img src="/showcase/stills/img-2.jpg" alt="" className="h-full w-full rounded-3xl object-cover" />
+            <img src="/showcase/stills/img-3.jpg" alt="" className="h-full w-full rounded-3xl object-cover" />
+            <img src="/showcase/stills/img-4.jpg" alt="" className="h-full w-full rounded-3xl object-cover" />
+            <img src="/showcase/stills/img-1.jpg" alt="" className="h-full w-full rounded-3xl object-cover" />
           </div>
         </Step>
       </div>
@@ -166,7 +166,7 @@ export function ImagePage() {
           </div>
         </aside>
 
-        <main className="min-h-[60vh] flex-1 overflow-hidden rounded-2xl border border-white/[0.08] bg-card/40">
+        <main className="min-h-[60vh] flex-1 overflow-hidden rounded-3xl border border-white/[0.08] bg-card/40">
           {view === "library" ? (
             <div className="p-6">
               <MyImages images={images} loading={loading} error={error} />

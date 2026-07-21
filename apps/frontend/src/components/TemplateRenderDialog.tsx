@@ -154,7 +154,7 @@ export function TemplateRenderDialog({ template, open, onOpenChange, onRendered 
             </div>
 
             {avatars.length === 0 ? (
-              <div className="rounded-xl border border-white/10 bg-white/[0.02] p-4 text-sm text-muted-foreground">
+              <div className="rounded-3xl border border-white/10 bg-white/[0.02] p-4 text-sm text-muted-foreground">
                 You don&apos;t have any avatars yet.
                 <Button asChild variant="link" className="h-auto px-1 py-0 text-primary">
                   <Link to="/user/avatar">Create one first.</Link>
@@ -166,7 +166,7 @@ export function TemplateRenderDialog({ template, open, onOpenChange, onRendered 
                   <div key={i} className="flex flex-col gap-1.5">
                     <Label>Avatar {template.avatarSlots > 1 ? i + 1 : ""}</Label>
                     <Select value={selected[i] ?? ""} onValueChange={(v) => setSlot(i, v)}>
-                      <SelectTrigger className="rounded-xl">
+                      <SelectTrigger className="rounded-2xl">
                         <SelectValue placeholder="Select an avatar" />
                       </SelectTrigger>
                       <SelectContent>
@@ -186,7 +186,7 @@ export function TemplateRenderDialog({ template, open, onOpenChange, onRendered 
 
             <Button
               size="lg"
-              className="mt-auto w-full rounded-xl"
+              className="mt-auto w-full rounded-full"
               onClick={handleGenerate}
               disabled={submitting || avatars.length === 0}
             >

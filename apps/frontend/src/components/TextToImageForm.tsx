@@ -105,7 +105,7 @@ export function TextToImageForm({ onCreated }: Props) {
         action="image"
       />
       {/* Preset / mode header card */}
-      <div className="relative h-28 overflow-hidden rounded-xl border border-white/10">
+      <div className="relative h-28 overflow-hidden rounded-3xl border border-white/10">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/25 via-card to-card" />
         <div className="relative flex h-full flex-col justify-end p-3">
           <span className="text-xs font-extrabold uppercase tracking-wide text-primary">
@@ -118,7 +118,7 @@ export function TextToImageForm({ onCreated }: Props) {
       </div>
 
       {/* Reference images */}
-      <div className="rounded-xl border border-white/10 bg-white/[0.02] p-3">
+      <div className="rounded-3xl border border-white/10 bg-white/[0.02] p-3">
         <div className="mb-2 text-xs font-medium text-muted-foreground">
           Reference images <span className="text-muted-foreground/60">(optional)</span>
         </div>
@@ -133,7 +133,7 @@ export function TextToImageForm({ onCreated }: Props) {
           <button
             type="button"
             onClick={() => fileInputRef.current?.click()}
-            className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg border border-dashed border-white/20 text-muted-foreground transition-colors hover:border-primary/50 hover:text-primary"
+            className="flex h-14 w-14 shrink-0 items-center justify-center rounded-3xl border border-dashed border-white/20 text-muted-foreground transition-colors hover:border-primary/50 hover:text-primary"
           >
             <Plus className="h-5 w-5" />
           </button>
@@ -152,7 +152,7 @@ export function TextToImageForm({ onCreated }: Props) {
       </div>
 
       {/* Prompt */}
-      <div className="rounded-xl border border-white/10 bg-white/[0.02] p-3">
+      <div className="rounded-3xl border border-white/10 bg-white/[0.02] p-3">
         <Label htmlFor="image-prompt" className="text-xs text-muted-foreground">
           Prompt
         </Label>
@@ -173,7 +173,7 @@ export function TextToImageForm({ onCreated }: Props) {
           <p className="text-sm text-destructive">{modelsError}</p>
         ) : (
           <Select value={model} onValueChange={setModel}>
-            <SelectTrigger className="rounded-xl">
+            <SelectTrigger className="rounded-2xl">
               <SelectValue placeholder="Select a model" />
             </SelectTrigger>
             <SelectContent>
@@ -194,7 +194,7 @@ export function TextToImageForm({ onCreated }: Props) {
             <RectangleHorizontal className="h-3 w-3" /> Aspect
           </Label>
           <Select value={aspectRatio || "auto"} onValueChange={(v) => setAspectRatio(v === "auto" ? "" : v)}>
-            <SelectTrigger className="rounded-xl px-2.5">
+            <SelectTrigger className="rounded-2xl px-2.5">
               <SelectValue placeholder="Auto" />
             </SelectTrigger>
             <SelectContent>
@@ -213,7 +213,7 @@ export function TextToImageForm({ onCreated }: Props) {
             <Gem className="h-3 w-3" /> Resolution
           </Label>
           <Select value={resolution || "auto"} onValueChange={(v) => setResolution(v === "auto" ? "" : v)}>
-            <SelectTrigger className="rounded-xl px-2.5">
+            <SelectTrigger className="rounded-2xl px-2.5">
               <SelectValue placeholder="Auto" />
             </SelectTrigger>
             <SelectContent>
@@ -231,7 +231,7 @@ export function TextToImageForm({ onCreated }: Props) {
       {error && <p className="text-sm text-destructive">{error}</p>}
 
       {/* Generate */}
-      <Button type="submit" size="lg" disabled={submitting} className="mt-1 w-full rounded-xl">
+      <Button type="submit" size="lg" disabled={submitting} className="mt-1 w-full rounded-full">
         {submitting ? (
           <>
             <Loader2 className="h-4 w-4 animate-spin" /> Generating…

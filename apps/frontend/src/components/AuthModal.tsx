@@ -32,7 +32,7 @@ export function AuthModal({ open, onOpenChange }: AuthModalProps) {
             />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent" />
             <div className="absolute inset-x-0 bottom-0 p-6">
-              <span className="inline-flex items-center gap-1 rounded-md bg-primary px-2 py-0.5 text-xs font-extrabold text-primary-foreground">
+              <span className="inline-flex items-center gap-1 rounded-2xl bg-primary px-2 py-0.5 text-xs font-extrabold text-primary-foreground">
                 4K Resolution
               </span>
               <h3 className="mt-3 text-2xl font-extrabold uppercase tracking-tight text-white">

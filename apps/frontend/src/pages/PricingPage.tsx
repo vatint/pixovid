@@ -97,7 +97,7 @@ export function PricingPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-12 lg:px-6">
       <div className="mx-auto max-w-2xl text-center">
-        <div className="font-hud mb-4 inline-flex items-center gap-2 rounded-sm border border-primary/30 bg-primary/10 px-3 py-1 text-[11px] tracking-wider text-primary">
+        <div className="font-hud mb-4 inline-flex items-center gap-2 rounded-2xl border border-primary/30 bg-primary/10 px-3 py-1 text-[11px] tracking-wider text-primary">
           <Coins className="h-4 w-4" />
           PREPAID CREDIT UPLINK
         </div>
@@ -120,7 +120,7 @@ export function PricingPage() {
         ].map((row) => (
           <div
             key={row.label}
-            className="rounded-sm border border-primary/15 bg-card/60 px-4 py-4 text-center shadow-[inset_0_0_24px_oklch(0.5_0.1_260/0.1)]"
+            className="rounded-3xl border border-primary/15 bg-card/60 px-4 py-4 text-center shadow-[inset_0_0_24px_oklch(0.5_0.1_260/0.1)]"
           >
             <row.icon className="mx-auto h-5 w-5 text-primary" />
             <div className="font-display mt-2 text-sm font-semibold tracking-wide">{row.label}</div>
@@ -142,14 +142,14 @@ export function PricingPage() {
             <div
               key={pack.id}
               className={cn(
-                "relative flex flex-col rounded-sm border bg-card p-6 shadow-xl shadow-black/40",
+                "relative flex flex-col rounded-3xl border bg-card p-6 shadow-xl shadow-black/40",
                 featured
                   ? "border-primary/45 shadow-[0_0_40px_-12px_oklch(0.72_0.16_250/0.4)] ring-1 ring-primary/30"
                   : "border-primary/15",
               )}
             >
               {featured && (
-                <span className="font-hud absolute -top-3 left-1/2 -translate-x-1/2 rounded-sm bg-primary px-3 py-0.5 text-[10px] font-bold tracking-wider text-primary-foreground shadow-[0_0_16px_oklch(0.72_0.16_250/0.5)]">
+                <span className="font-hud absolute -top-3 left-1/2 -translate-x-1/2 rounded-2xl bg-primary px-3 py-0.5 text-[10px] font-bold tracking-wider text-primary-foreground shadow-[0_0_16px_oklch(0.72_0.16_250/0.5)]">
                   BEST VALUE
                 </span>
               )}

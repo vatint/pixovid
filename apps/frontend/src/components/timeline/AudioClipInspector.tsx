@@ -112,7 +112,7 @@ export function AudioClipInspector({ templateId, audioTrackCount, clip, onSaved,
         </Select>
       </div>
 
-      <div className="flex flex-col gap-1.5 rounded-md border border-input px-3 py-2 text-xs">
+      <div className="flex flex-col gap-1.5 rounded-2xl border border-input px-3 py-2 text-xs">
         <div className="flex items-center justify-between">
           <span className="text-muted-foreground">
             {cropped ? (

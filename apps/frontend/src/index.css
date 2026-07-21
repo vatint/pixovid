@@ -33,7 +33,8 @@
   --border: oklch(0.7 0.12 250 / 22%);
   --input: oklch(0.7 0.12 250 / 26%);
   --ring: oklch(0.78 0.14 245);
-  --radius: 0.35rem;
+  /* Conspicuously rounded controls & cards (soft “pill / bubble” feel). */
+  --radius: 1.25rem;
 
   /* Brand blues: ice / sky + deeper royal */
   --brand: oklch(0.82 0.12 235);
@@ -74,10 +75,12 @@
   --color-blue-electric: var(--blue-electric);
   --color-blue-royal: var(--blue-royal);
   --color-blue-navy: var(--blue-navy);
-  --radius-sm: calc(var(--radius) - 2px);
+  --radius-sm: 0.85rem;
   --radius-md: var(--radius);
-  --radius-lg: calc(var(--radius) + 4px);
-  --radius-xl: calc(var(--radius) + 8px);
+  --radius-lg: 1.5rem;
+  --radius-xl: 1.75rem;
+  --radius-2xl: 2rem;
+  --radius-3xl: 2.5rem;
   --font-sans: "Exo 2", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Orbitron", "Exo 2", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "Share Tech Mono", ui-monospace, monospace;
@@ -167,7 +170,7 @@
   }
   *::-webkit-scrollbar-thumb {
     background-color: oklch(0.72 0.14 250 / 32%);
-    border-radius: 2px;
+    border-radius: 9999px;
     border: 2px solid transparent;
     background-clip: padding-box;
   }
@@ -249,22 +252,13 @@
   .hud-panel {
     position: relative;
     border: 1px solid oklch(0.72 0.14 250 / 24%);
+    border-radius: var(--radius-xl);
     background:
       linear-gradient(135deg, oklch(0.75 0.12 245 / 8%) 0%, transparent 40%),
       oklch(0.15 0.05 255 / 88%);
     box-shadow:
       inset 0 0 40px oklch(0.4 0.1 260 / 25%),
       0 0 24px -12px oklch(0.72 0.16 250 / 30%);
-    clip-path: polygon(
-      0 10px,
-      10px 0,
-      calc(100% - 10px) 0,
-      100% 10px,
-      100% calc(100% - 10px),
-      calc(100% - 10px) 100%,
-      10px 100%,
-      0 calc(100% - 10px)
-    );
   }
 
   .shimmer {

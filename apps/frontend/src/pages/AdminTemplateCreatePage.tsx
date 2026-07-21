@@ -490,7 +490,7 @@ export function AdminTemplateCreatePage() {
           </aside>
 
           {/* Continue editing */}
-          <main className="min-h-[60vh] flex-1 overflow-hidden rounded-2xl border border-white/[0.08] bg-card/40 p-6">
+          <main className="min-h-[60vh] flex-1 overflow-hidden rounded-3xl border border-white/[0.08] bg-card/40 p-6">
             <h2 className="mb-4 text-lg font-semibold">Continue editing</h2>
             {openError && <p className="mb-3 text-sm text-destructive">{openError}</p>}
             {templates.length === 0 ? (
@@ -503,7 +503,7 @@ export function AdminTemplateCreatePage() {
                   <button
                     key={t.id}
                     onClick={() => openTemplate(t.id)}
-                    className="group flex flex-col overflow-hidden rounded-xl border border-white/[0.08] bg-white/[0.02] text-left transition-colors hover:border-primary/40 hover:bg-white/[0.05]"
+                    className="group flex flex-col overflow-hidden rounded-3xl border border-white/[0.08] bg-white/[0.02] text-left transition-colors hover:border-primary/40 hover:bg-white/[0.05]"
                   >
                     <div className="relative aspect-video w-full overflow-hidden bg-black/40">
                       {t.previewVideoUrl ? (
@@ -706,7 +706,7 @@ export function AdminTemplateCreatePage() {
           {current.previewVideoUrl && (
             <div className="mt-5">
               <h3 className="mb-2 text-sm font-medium">Latest export</h3>
-              <video src={current.previewVideoUrl} controls className="w-full rounded-md" />
+              <video src={current.previewVideoUrl} controls className="w-full rounded-2xl" />
             </div>
           )}
         </div>
@@ -753,11 +753,11 @@ export function AdminTemplateCreatePage() {
             }}
           />
           <div
-            className="fixed z-50 min-w-36 overflow-hidden rounded-md border bg-popover p-1 text-sm shadow-md"
+            className="fixed z-50 min-w-36 overflow-hidden rounded-2xl border bg-popover p-1 text-sm shadow-md"
             style={{ left: menu.x, top: menu.y }}
           >
             <button
-              className="flex w-full items-center gap-2 rounded-sm px-2 py-1.5 text-left hover:bg-accent disabled:opacity-50"
+              className="flex w-full items-center gap-2 rounded-2xl px-2 py-1.5 text-left hover:bg-accent disabled:opacity-50"
               disabled={!menu.blockId}
               onClick={() => {
                 setClipboardId(menu.blockId);
@@ -767,7 +767,7 @@ export function AdminTemplateCreatePage() {
               <Copy className="h-4 w-4" /> Copy
             </button>
             <button
-              className="flex w-full items-center gap-2 rounded-sm px-2 py-1.5 text-left hover:bg-accent disabled:opacity-50"
+              className="flex w-full items-center gap-2 rounded-2xl px-2 py-1.5 text-left hover:bg-accent disabled:opacity-50"
               disabled={!clipboardId}
               onClick={() => {
                 void handlePaste();
@@ -777,7 +777,7 @@ export function AdminTemplateCreatePage() {
               <ClipboardPaste className="h-4 w-4" /> Paste
             </button>
             <button
-              className="flex w-full items-center gap-2 rounded-sm px-2 py-1.5 text-left text-destructive hover:bg-accent disabled:opacity-50"
+              className="flex w-full items-center gap-2 rounded-2xl px-2 py-1.5 text-left text-destructive hover:bg-accent disabled:opacity-50"
               disabled={!menu.blockId}
               onClick={() => {
                 if (menu.blockId) void handleDeleteBlock(menu.blockId);

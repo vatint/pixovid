@@ -24,7 +24,7 @@ function Step({
 }) {
   return (
     <div>
-      <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.02]">
+      <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-3xl border border-white/[0.08] bg-white/[0.02]">
         <span className="absolute left-3 top-3 flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
           {badge}
         </span>
@@ -73,7 +73,7 @@ function IntroPanel() {
             {["seedance-2.0", "kling-v3.0", "seedance-2.0-fast", "more…"].map((m) => (
               <span
                 key={m}
-                className="rounded-lg border border-white/10 bg-white/[0.03] px-2 py-3 text-center text-xs font-medium text-muted-foreground"
+                className="rounded-3xl border border-white/10 bg-white/[0.03] px-2 py-3 text-center text-xs font-medium text-muted-foreground"
               >
                 {m}
               </span>
@@ -87,7 +87,7 @@ function IntroPanel() {
           description="Hit Generate to render your final clip — it lands in History."
         >
           <video
-            className="h-full w-full rounded-xl border-2 border-white/80 object-cover"
+            className="h-full w-full rounded-2xl border-2 border-white/80 object-cover"
             src="/showcase/drift-racing.mp4"
             autoPlay
             muted
@@ -180,7 +180,7 @@ export function VideoPage() {
         </aside>
 
         {/* Main panel */}
-        <main className="min-h-[60vh] flex-1 overflow-hidden rounded-2xl border border-white/[0.08] bg-card/40">
+        <main className="min-h-[60vh] flex-1 overflow-hidden rounded-3xl border border-white/[0.08] bg-card/40">
           {view === "library" ? (
             <div className="p-6">
               <MyVideos videos={videos} loading={loading} error={error} />

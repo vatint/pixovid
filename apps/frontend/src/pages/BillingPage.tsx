@@ -99,7 +99,7 @@ export function BillingPage() {
         title="Top up your credits."
         description="Buy credits and spend them on video, image and template-render generations. Credits are refunded automatically if a generation fails."
       >
-        <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-4 backdrop-blur">
+        <div className="flex items-center gap-3 rounded-3xl border border-white/10 bg-white/[0.04] px-5 py-4 backdrop-blur">
           <Coins className="h-6 w-6 text-brand" />
           <div>
             <p className="text-xs uppercase tracking-widest text-muted-foreground">Balance</p>
@@ -112,18 +112,18 @@ export function BillingPage() {
       </PageHeader>
 
       {error && (
-        <div className="rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-300">
+        <div className="rounded-2xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-300">
           {error}
         </div>
       )}
       {notice && (
-        <div className="rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-300">
+        <div className="rounded-2xl border border-emerald-500/30 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-300">
           {notice}
         </div>
       )}
 
       {packs && !packs.razorpayConfigured && (
-        <div className="rounded-xl border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-200">
+        <div className="rounded-2xl border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-200">
           Payments are not configured on this server. Set <code>RAZORPAY_KEY_ID</code> and{" "}
           <code>RAZORPAY_KEY_SECRET</code> in the backend environment to enable purchases.
         </div>
@@ -139,7 +139,7 @@ export function BillingPage() {
           ].map((row) => (
             <div
               key={row.label}
-              className="flex items-center justify-between rounded-xl border border-white/[0.06] bg-white/[0.03] px-4 py-3 text-sm"
+              className="flex items-center justify-between rounded-2xl border border-white/[0.06] bg-white/[0.03] px-4 py-3 text-sm"
             >
               <span className="text-muted-foreground">{row.label}</span>
               <span className="font-medium">{row.cost} credits</span>

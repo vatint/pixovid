@@ -97,7 +97,7 @@ export function AuthForm({ onSuccess, callbackURL }: AuthFormProps) {
           setShowEmail(true);
           setError(null);
         }}
-        className="flex w-full items-center justify-center gap-2 rounded-xl border border-primary/40 bg-primary/10 px-4 py-3 text-sm font-semibold text-primary transition-colors hover:bg-primary/20"
+        className="flex w-full items-center justify-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-4 py-3 text-sm font-semibold text-primary transition-colors hover:bg-primary/20"
       >
         <Gift className="h-4 w-4" />
         Sign up and get an additional discount
@@ -107,7 +107,7 @@ export function AuthForm({ onSuccess, callbackURL }: AuthFormProps) {
       <button
         type="button"
         onClick={handleGoogle}
-        className="flex w-full items-center justify-center gap-2.5 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm font-medium transition-colors hover:bg-white/[0.07]"
+        className="flex w-full items-center justify-center gap-2.5 rounded-full border border-white/10 bg-white/[0.03] px-4 py-3 text-sm font-medium transition-colors hover:bg-white/[0.07]"
       >
         <GoogleIcon />
         Continue with Google
@@ -122,7 +122,7 @@ export function AuthForm({ onSuccess, callbackURL }: AuthFormProps) {
         <button
           type="button"
           onClick={() => setShowEmail(true)}
-          className="flex w-full items-center justify-center gap-2.5 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm font-medium transition-colors hover:bg-white/[0.07]"
+          className="flex w-full items-center justify-center gap-2.5 rounded-full border border-white/10 bg-white/[0.03] px-4 py-3 text-sm font-medium transition-colors hover:bg-white/[0.07]"
         >
           <Mail className="h-4 w-4" />
           Continue with Email
@@ -164,7 +164,7 @@ export function AuthForm({ onSuccess, callbackURL }: AuthFormProps) {
           <button
             type="submit"
             disabled={loading}
-            className="rounded-xl bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground transition-all hover:bg-primary/90 disabled:opacity-50"
+            className="rounded-2xl bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground transition-all hover:bg-primary/90 disabled:opacity-50"
           >
             {loading ? "Please wait…" : mode === "signin" ? "Sign in" : "Sign up"}
           </button>

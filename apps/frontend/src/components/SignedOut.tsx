@@ -11,7 +11,7 @@ export function SignedOut() {
     <div className="relative mx-auto flex max-w-3xl flex-col items-center px-4 py-20 text-center sm:py-28">
       <div className="pointer-events-none absolute left-1/2 top-10 -z-10 h-64 w-64 -translate-x-1/2 rounded-full bg-brand/20 blur-3xl" />
       <JupiterLogo className="mb-5 h-16 w-16" />
-      <div className="mb-5 inline-flex items-center gap-2 rounded-sm border border-primary/25 bg-primary/10 px-3.5 py-1.5 text-sm text-primary shadow-sm backdrop-blur">
+      <div className="mb-5 inline-flex items-center gap-2 rounded-2xl border border-primary/25 bg-primary/10 px-3.5 py-1.5 text-sm text-primary shadow-sm backdrop-blur">
         Sign in to unlock the studio
       </div>
       <h1 className="text-4xl font-semibold tracking-tight text-balance text-gradient sm:text-5xl">

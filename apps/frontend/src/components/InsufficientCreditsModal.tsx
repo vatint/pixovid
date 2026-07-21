@@ -70,13 +70,13 @@ export function InsufficientCreditsModal({
 
         <div className="space-y-4 px-6 py-5">
           <div className="grid grid-cols-2 gap-3">
-            <div className="rounded-xl border border-white/10 bg-white/[0.03] p-3">
+            <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-3">
               <div className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
                 Your balance
               </div>
               <div className="mt-1 text-2xl font-semibold tabular-nums">{balance}</div>
             </div>
-            <div className="rounded-xl border border-primary/25 bg-primary/10 p-3">
+            <div className="rounded-2xl border border-primary/25 bg-primary/10 p-3">
               <div className="text-[11px] font-semibold uppercase tracking-wide text-primary">
                 Required
               </div>

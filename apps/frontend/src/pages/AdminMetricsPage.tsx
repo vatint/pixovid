@@ -268,7 +268,7 @@ export function AdminMetricsPage() {
             <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
               Pack sales
             </h2>
-            <div className="overflow-hidden rounded-2xl border border-white/[0.08]">
+            <div className="overflow-hidden rounded-3xl border border-white/[0.08]">
               <table className="w-full text-left text-sm">
                 <thead className="bg-white/[0.03] text-xs uppercase tracking-wide text-muted-foreground">
                   <tr>

@@ -68,7 +68,7 @@ function BlockTile({ block, index }: { block: RenderBlockProgress; index: number
   return (
     <div
       className={cn(
-        "flex w-44 shrink-0 flex-col gap-2 rounded-xl border bg-card/60 p-3 transition-colors",
+        "flex w-44 shrink-0 flex-col gap-2 rounded-2xl border bg-card/60 p-3 transition-colors",
         cfg.accent,
         active && "ring-1 ring-inset ring-white/10",
       )}

@@ -598,7 +598,7 @@ export function Timeline({
   return (
     <div className="flex flex-col gap-3">
       {/* Program monitor */}
-      <div className="mx-auto w-full max-w-2xl overflow-hidden rounded-lg border bg-black">
+      <div className="mx-auto w-full max-w-2xl overflow-hidden rounded-3xl border bg-black">
         <div className="relative flex aspect-video items-center justify-center">
           {activeClipUrl ? (
             <video
@@ -691,7 +691,7 @@ export function Timeline({
         </div>
       </div>
 
-      <div className="overflow-x-auto rounded-lg border bg-card">
+      <div className="overflow-x-auto rounded-3xl border bg-card">
         <div style={{ minWidth: width + TRACK_LABEL_W }}>
           {/* Ruler */}
           <div className="flex border-b bg-muted/40">
@@ -776,7 +776,7 @@ export function Timeline({
                     });
                   }}
                   className={cn(
-                    "absolute flex cursor-grab flex-col justify-between overflow-hidden rounded-md border px-2 py-1 text-xs active:cursor-grabbing",
+                    "absolute flex cursor-grab flex-col justify-between overflow-hidden rounded-2xl border px-2 py-1 text-xs active:cursor-grabbing",
                     invalidId === b.id
                       ? "border-destructive bg-destructive/20 ring-2 ring-destructive"
                       : selectedId === b.id
@@ -821,7 +821,7 @@ export function Timeline({
               {createPreview && (
                 <div
                   className={cn(
-                    "pointer-events-none absolute rounded-md border-2 border-dashed",
+                    "pointer-events-none absolute rounded-2xl border-2 border-dashed",
                     previewInvalid ? "border-destructive bg-destructive/10" : "border-primary bg-primary/10",
                   )}
                   style={{
@@ -896,7 +896,7 @@ export function Timeline({
                     });
                   }}
                   className={cn(
-                    "absolute flex cursor-grab items-center gap-1 overflow-hidden rounded-md border px-2 text-xs active:cursor-grabbing",
+                    "absolute flex cursor-grab items-center gap-1 overflow-hidden rounded-2xl border px-2 text-xs active:cursor-grabbing",
                     invalidId === c.id
                       ? "border-destructive bg-destructive/20 ring-2 ring-destructive"
                       : selectedAudioId === c.id

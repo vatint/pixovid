@@ -45,7 +45,7 @@ export function AvatarForm({ onCreated }: Props) {
   return (
     <form onSubmit={handleSubmit} className="flex w-full flex-col gap-3">
       {/* Header card */}
-      <div className="relative h-28 overflow-hidden rounded-xl border border-white/10">
+      <div className="relative h-28 overflow-hidden rounded-3xl border border-white/10">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/25 via-card to-card" />
         <div className="relative flex h-full flex-col justify-end p-3">
           <span className="text-xs font-extrabold uppercase tracking-wide text-primary">
@@ -56,7 +56,7 @@ export function AvatarForm({ onCreated }: Props) {
       </div>
 
       {/* Quality tip */}
-      <div className="flex items-start gap-2 rounded-xl border border-primary/30 bg-primary/10 p-3">
+      <div className="flex items-start gap-2 rounded-2xl border border-primary/30 bg-primary/10 p-3">
         <Sparkles className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
         <p className="text-xs leading-5 text-foreground">
           <span className="font-semibold">The better the input, the better the output.</span>{" "}
@@ -75,12 +75,12 @@ export function AvatarForm({ onCreated }: Props) {
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="e.g. Me, on stage"
-          className="rounded-xl"
+          className="rounded-2xl"
         />
       </div>
 
       {/* Photos */}
-      <div className="rounded-xl border border-white/10 bg-white/[0.02] p-3">
+      <div className="rounded-3xl border border-white/10 bg-white/[0.02] p-3">
         <div className="mb-2 text-xs font-medium text-muted-foreground">
           Photos <span className="text-muted-foreground/60">(1st = face source)</span>
         </div>
@@ -102,7 +102,7 @@ export function AvatarForm({ onCreated }: Props) {
 
       {error && <p className="text-sm text-destructive">{error}</p>}
 
-      <Button type="submit" size="lg" disabled={submitting} className="mt-1 w-full rounded-xl">
+      <Button type="submit" size="lg" disabled={submitting} className="mt-1 w-full rounded-full">
         {submitting ? (
           <>
             <Loader2 className="h-4 w-4 animate-spin" /> Creating…

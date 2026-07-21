@@ -46,7 +46,7 @@ interface Props {
 
 function Toggle({ checked, onChange, label }: { checked: boolean; onChange: (v: boolean) => void; label: string }) {
   return (
-    <label className="flex cursor-pointer items-center justify-between rounded-md border border-input px-3 py-2 text-sm">
+    <label className="flex cursor-pointer items-center justify-between rounded-2xl border border-input px-3 py-2 text-sm">
       <span className="font-medium">{label}</span>
       <input type="checkbox" className="h-4 w-4 accent-primary" checked={checked} onChange={(e) => onChange(e.target.checked)} />
     </label>
@@ -283,7 +283,7 @@ export function BlockInspector({
         </p>
 
         {block.sourceVideoUrl && !sourceVideo && (
-          <video src={block.sourceVideoUrl} controls className="w-full rounded-md" />
+          <video src={block.sourceVideoUrl} controls className="w-full rounded-2xl" />
         )}
 
         <FileField
@@ -310,7 +310,7 @@ export function BlockInspector({
           </Select>
         </div>
 
-        <div className="flex flex-col gap-1.5 rounded-md border border-input px-3 py-2 text-xs">
+        <div className="flex flex-col gap-1.5 rounded-2xl border border-input px-3 py-2 text-xs">
           <div className="flex items-center justify-between">
             <span className="text-muted-foreground">
               {cropped ? (
@@ -461,7 +461,7 @@ export function BlockInspector({
         </div>
       </div>
 
-      <div className="flex flex-col gap-1.5 rounded-md border border-input px-3 py-2 text-xs">
+      <div className="flex flex-col gap-1.5 rounded-2xl border border-input px-3 py-2 text-xs">
         <div className="flex items-center justify-between">
           <span className="text-muted-foreground">
             {cropped ? (
@@ -537,7 +537,7 @@ export function BlockInspector({
         Use preview frame as start
       </Button>
       {block.startImageUrl && !startImage && (
-        <img src={block.startImageUrl} alt="start frame" className="h-20 w-auto rounded-md object-cover" />
+        <img src={block.startImageUrl} alt="start frame" className="h-20 w-auto rounded-2xl object-cover" />
       )}
       <FileField
         label="End frame (base image)"
@@ -558,7 +558,7 @@ export function BlockInspector({
         Use preview frame as end
       </Button>
       {block.endImageUrl && !endImage && (
-        <img src={block.endImageUrl} alt="end frame" className="h-20 w-auto rounded-md object-cover" />
+        <img src={block.endImageUrl} alt="end frame" className="h-20 w-auto rounded-2xl object-cover" />
       )}
 
       <div className="flex flex-col gap-2">
@@ -617,7 +617,7 @@ export function BlockInspector({
       )}
 
       {(faceSwapStart || faceSwapEnd) && (
-        <div className="flex flex-col gap-2 rounded-md border border-input p-3">
+        <div className="flex flex-col gap-2 rounded-2xl border border-input p-3">
           <div className="flex items-center justify-between gap-2">
             <span className="text-sm font-medium">Face swap preview</span>
             <Button
@@ -651,13 +651,13 @@ export function BlockInspector({
               <div className="flex flex-wrap gap-3">
                 {block.swappedStartUrl && (
                   <figure className="flex flex-col gap-1">
-                    <img src={block.swappedStartUrl} alt="swapped start" className="h-24 w-auto rounded-md object-cover" />
+                    <img src={block.swappedStartUrl} alt="swapped start" className="h-24 w-auto rounded-2xl object-cover" />
                     <figcaption className="text-[10px] text-muted-foreground">Start (swapped)</figcaption>
                   </figure>
                 )}
                 {block.swappedEndUrl && (
                   <figure className="flex flex-col gap-1">
-                    <img src={block.swappedEndUrl} alt="swapped end" className="h-24 w-auto rounded-md object-cover" />
+                    <img src={block.swappedEndUrl} alt="swapped end" className="h-24 w-auto rounded-2xl object-cover" />
                     <figcaption className="text-[10px] text-muted-foreground">End (swapped)</figcaption>
                   </figure>
                 )}

@@ -77,7 +77,7 @@ export function TemplateSetupForm({ onCreated }: Props) {
           You need at least one avatar before creating a template. Avatars define who
           appears in the generated video.
         </p>
-        <Button asChild className="mt-4 w-fit rounded-xl">
+        <Button asChild className="mt-4 w-fit rounded-full">
           <Link to="/user/avatar">Create an avatar</Link>
         </Button>
       </div>
@@ -87,7 +87,7 @@ export function TemplateSetupForm({ onCreated }: Props) {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-3">
       {/* Header card */}
-      <div className="relative h-28 overflow-hidden rounded-xl border border-white/10">
+      <div className="relative h-28 overflow-hidden rounded-3xl border border-white/10">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/25 via-card to-card" />
         <div className="relative flex h-full flex-col justify-end p-3">
           <span className="text-xs font-extrabold uppercase tracking-wide text-primary">
@@ -149,7 +149,7 @@ export function TemplateSetupForm({ onCreated }: Props) {
         The timeline length grows automatically to fit your clips.
       </p>
       {error && <p className="text-sm text-destructive">{error}</p>}
-      <Button type="submit" size="lg" disabled={submitting} className="w-full rounded-xl">
+      <Button type="submit" size="lg" disabled={submitting} className="w-full rounded-full">
         {submitting ? (
           <>
             <Loader2 className="h-4 w-4 animate-spin" /> Creating…

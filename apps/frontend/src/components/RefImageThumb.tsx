@@ -6,7 +6,7 @@ export function RefImageThumb({ file, onClear }: { file: File; onClear: () => vo
   const url = useMemo(() => URL.createObjectURL(file), [file]);
   useEffect(() => () => URL.revokeObjectURL(url), [url]);
   return (
-    <div className="group relative h-14 w-14 shrink-0 overflow-hidden rounded-lg border border-white/10">
+    <div className="group relative h-14 w-14 shrink-0 overflow-hidden rounded-3xl border border-white/10">
       <img src={url} alt="" className="h-full w-full object-cover" />
       <button
         type="button"
