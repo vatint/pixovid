@@ -1,6 +1,7 @@
 import { prisma, type Avatar, type TemplateAudioClip, type TemplateBlock } from "@repo/db";
 import { uploadBuffer } from "./storage.js";
 import { extFromMime } from "./uploads.js";
+import { maybeWatermarkVideo } from "./watermark.js";
 import {
   renderTemplate,
   type ArtifactsFn,
@@ -96,8 +97,17 @@ export async function runAndStoreRender(params: {
       resume,
     });
 
+    // Free-tier users: watermark final stitch. Paid (any PURCHASE) → clean.
+    const renderRow = await prisma.templateRender.findUnique({
+      where: { id: params.renderId },
+      select: { userId: true },
+    });
+    const videoBuffer = renderRow?.userId
+      ? await maybeWatermarkVideo(renderRow.userId, result.videoBuffer)
+      : result.videoBuffer;
+
     const [videoKey, thumbnailKey] = await Promise.all([
-      uploadBuffer(result.videoBuffer, result.contentType, "templates/renders", "mp4"),
+      uploadBuffer(videoBuffer, result.contentType, "templates/renders", "mp4"),
       uploadBuffer(
         result.thumbnailBuffer,
         result.thumbnailContentType,

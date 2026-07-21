@@ -14,7 +14,9 @@ import { avatarsRouter } from "./routes/avatars.js";
 import { templatesRouter, templateRendersRouter } from "./routes/templates.js";
 import { adminTemplatesRouter } from "./routes/adminTemplates.js";
 import { creditsRouter, creditsWebhookHandler } from "./routes/credits.js";
+import { adminMetricsRouter } from "./routes/adminMetrics.js";
 import { uploadErrorHandler } from "./lib/uploads.js";
+import { allowRequest, clientIp } from "./lib/rateLimit.js";
 
 const app = express();
 
@@ -25,6 +27,36 @@ app.use(
     credentials: true,
   }),
 );
+
+// Signup / sign-in abuse caps (Phase 0). Single-instance sliding window.
+app.use("/api/auth", (req, res, next) => {
+  const path = req.path.toLowerCase();
+  const isSignup =
+    req.method === "POST" &&
+    (path.includes("sign-up") || path.includes("signup") || path.includes("sign-up/email"));
+  const isSignIn =
+    req.method === "POST" &&
+    (path.includes("sign-in") || path.includes("signin") || path.includes("sign-in/email"));
+  if (!isSignup && !isSignIn) {
+    next();
+    return;
+  }
+  const ip = clientIp(req);
+  // Signups: 5 / hour / IP. Sign-ins: 30 / 15 min / IP (brute-force soft limit).
+  const check = isSignup
+    ? allowRequest(`signup:${ip}`, 5, 60 * 60 * 1000)
+    : allowRequest(`signin:${ip}`, 30, 15 * 60 * 1000);
+  if (!check.allowed) {
+    res.setHeader("Retry-After", String(check.retryAfterSec));
+    res.status(429).json({
+      error: isSignup
+        ? "Too many signups from this network. Try again later."
+        : "Too many sign-in attempts. Try again later.",
+    });
+    return;
+  }
+  next();
+});
 
 // Better-auth handler must be mounted BEFORE express.json().
 app.all("/api/auth/*", toNodeHandler(auth));
@@ -52,6 +84,7 @@ app.use("/api/avatars", avatarsRouter);
 app.use("/api/templates", templatesRouter);
 app.use("/api/template-renders", templateRendersRouter);
 app.use("/api/admin/templates", adminTemplatesRouter);
+app.use("/api/admin/metrics", adminMetricsRouter);
 app.use("/api/credits", creditsRouter);
 
 // Turn multer upload failures into clean 400s (mounted after all routers).

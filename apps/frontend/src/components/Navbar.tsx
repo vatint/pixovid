@@ -29,7 +29,11 @@ export function Navbar() {
   const location = useLocation();
 
   const links: NavLink[] = me?.isAdmin
-    ? [...NAV_LINKS, { to: "/admin/template/create", label: "Admin" }]
+    ? [
+        ...NAV_LINKS,
+        { to: "/admin/template/create", label: "Admin" },
+        { to: "/admin/metrics", label: "Metrics" },
+      ]
     : NAV_LINKS;
 
   const isActive = (to: string) =>

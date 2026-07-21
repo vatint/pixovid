@@ -6,6 +6,7 @@ import { generateVideo } from "../lib/openrouter.js";
 import { getPublicUrl, uploadBuffer } from "../lib/storage.js";
 import { extFromMime, toDataUrl, upload } from "../lib/uploads.js";
 import { actionCost, getBalance, refundCredits, spendCredits } from "../lib/credits.js";
+import { maybeWatermarkVideo } from "../lib/watermark.js";
 
 export const videosRouter: Router = Router();
 
@@ -146,7 +147,9 @@ videosRouter.post(
         references: referenceFrames.map((f) => ({ url: toDataUrl(f) })),
       });
 
-      const videoKey = await uploadBuffer(generated.buffer, generated.contentType, "videos", "mp4");
+      // Free / never-purchased accounts get a burn-in watermark; paid unlocks clean exports.
+      const outBuffer = await maybeWatermarkVideo(req.userId!, generated.buffer);
+      const videoKey = await uploadBuffer(outBuffer, generated.contentType, "videos", "mp4");
 
       const updated = await prisma.video.update({
         where: { id: video.id },

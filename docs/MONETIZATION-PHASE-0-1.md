@@ -41,19 +41,19 @@ Goal: real rupees can move, costs are visible, free abuse is bounded.
 
 | | |
 |--|--|
-| **Status** | `[ ]` |
-| **Files** | new `routes/adminMetrics.ts` (admin-only); optional Grafana/SQL |
-| **Metrics** | Revenue (sum PURCHASE), credits sold vs spent, OpenRouter $ (from env logs or provider export), refund rate, free BONUS burn |
-| **Done when** | Superadmin can open `/admin/metrics` or a SQL view with last-30d margin proxy |
+| **Status** | `[x]` |
+| **Files** | `routes/adminMetrics.ts`, `pages/AdminMetricsPage.tsx` → `/admin/metrics` |
+| **Metrics** | Revenue (PAID payments), credits ledger, gens by status, provider cost sum, pack sales |
+| **Done when** | Admin can open `/admin/metrics` with last-30d + lifetime proxies |
 
 ### 0.5 Free-tier abuse caps  ·  *backend*  ·  **4–6 h**
 
 | | |
 |--|--|
-| **Status** | `[ ]` |
-| **Files** | `auth.ts` welcome bonus, new table `SignupFingerprint` or Redis |
-| **Rules** | 1 welcome grant per email (done); add per IP / device hash limit; rate-limit signup |
-| **Done when** | Same IP cannot farm >N welcome accounts / day |
+| **Status** | `[x]` (in-process IP limits; Redis later) |
+| **Files** | `lib/rateLimit.ts`, `index.ts` `/api/auth` middleware |
+| **Rules** | 1 welcome grant per email (done); signup **5/hour/IP**; sign-in **30/15min/IP** |
+| **Done when** | Excess signups return **429** with Retry-After |
 
 ### 0.6 GST / invoice PDF (India)  ·  *backend*  ·  **1–2 d**
 
@@ -67,9 +67,9 @@ Goal: real rupees can move, costs are visible, free abuse is bounded.
 
 | | |
 |--|--|
-| **Status** | `[~]` Terms mention credits |
+| **Status** | `[x]` |
 | **Files** | `TermsPage.tsx`, `RefundPage.tsx` |
-| **Must state** | Credits non-transferable; refunds only on failed gens; no cash refund of unused credits (if policy); commercial use requires paid credits |
+| **Must state** | Credits non-transferable; refunds only on failed gens; no cash for unused credits; watermark free tier; commercial use after purchase |
 
 ---
 
@@ -97,10 +97,10 @@ Goal: more % of activated users buy; no dead-end on 402.
 
 | | |
 |--|--|
-| **Status** | `[ ]` |
-| **Files** | `lib/ffmpeg.ts`, video completion path, image completion path |
-| **Rule** | Users with **only BONUS credits ever spent** OR `plan === free` get `pixovid` watermark; any PURCHASE history → clean export |
-| **Done when** | Free user download shows watermark; after first pack purchase, new gens are clean |
+| **Status** | `[x]` |
+| **Files** | `lib/watermark.ts`; wired in `routes/videos.ts`, `routes/images.ts`, `lib/runRender.ts` |
+| **Rule** | No `PURCHASE` ledger row → watermark on video/image/template final; any PURCHASE → clean |
+| **Done when** | Free user outputs show `pixovid` / `FREE TIER`; paid users get clean new gens |
 
 ### 1.4 Referral credits  ·  *full stack*  ·  **1–2 d**
 
@@ -163,13 +163,13 @@ Goal: more % of activated users buy; no dead-end on 402.
 ## Suggested build order (this repo)
 
 ```
-Week 1  0.1 Razorpay live
-        0.2 + 0.3 Pricing page + public packs     ← done in code
-        1.2 Insufficient credits modal            ← done in code
-        0.7 Legal copy
-Week 2  0.5 Abuse caps
-        1.3 Watermark free exports
-        0.4 Metrics dashboard
+Week 1  0.1 Razorpay live                         ← ops (keys)
+        0.2 + 0.3 Pricing page + public packs     ← done
+        1.2 Insufficient credits modal            ← done
+        0.7 Legal copy                            ← done
+Week 2  0.5 Abuse caps                            ← done (IP rate limits)
+        1.3 Watermark free exports                ← done
+        0.4 Metrics dashboard                     ← done
 Week 3  1.5 Cost multipliers
         1.4 Referrals
 Week 4+ Phase 2 subscriptions

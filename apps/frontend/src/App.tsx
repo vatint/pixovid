@@ -11,6 +11,7 @@ import { AvatarPage } from "@/pages/AvatarPage";
 import { TemplatesPage } from "@/pages/TemplatesPage";
 import { GenerationPage } from "@/pages/GenerationPage";
 import { AdminTemplateCreatePage } from "@/pages/AdminTemplateCreatePage";
+import { AdminMetricsPage } from "@/pages/AdminMetricsPage";
 import { BillingPage } from "@/pages/BillingPage";
 import { PricingPage } from "@/pages/PricingPage";
 import { PrivacyPage } from "@/pages/PrivacyPage";
@@ -38,6 +39,7 @@ export default function App() {
               path="/admin/template/create"
               element={<AdminTemplateCreatePage />}
             />
+            <Route path="/admin/metrics" element={<AdminMetricsPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/privacy" element={<PrivacyPage />} />
             <Route path="/refund" element={<RefundPage />} />

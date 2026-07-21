@@ -6,6 +6,7 @@ import { generateImage } from "../lib/openrouter.js";
 import { getPublicUrl, uploadBuffer } from "../lib/storage.js";
 import { extFromMime, toDataUrl, upload } from "../lib/uploads.js";
 import { actionCost, getBalance, refundCredits, spendCredits } from "../lib/credits.js";
+import { maybeWatermarkImage } from "../lib/watermark.js";
 
 export const imagesRouter: Router = Router();
 
@@ -114,7 +115,12 @@ imagesRouter.post(
       });
 
       const ext = extFromMime(generated.contentType);
-      const imageKey = await uploadBuffer(generated.buffer, generated.contentType, "images", ext);
+      const outBuffer = await maybeWatermarkImage(
+        req.userId!,
+        generated.buffer,
+        generated.contentType,
+      );
+      const imageKey = await uploadBuffer(outBuffer, generated.contentType, "images", ext);
 
       const updated = await prisma.image.update({
         where: { id: image.id },
