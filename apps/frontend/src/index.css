@@ -3,38 +3,39 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Pixovid — Higgsfield-style theme.
- * Pure-black canvas, dark neutral surfaces, a signature electric-lime primary
- * CTA and a hot-pink secondary accent for "trending"/discount badges. No light
- * theme.
+ * Pixovid — Sci-fi / mission-control theme.
+ * Deep space navy canvas, cyan primary, magenta accent, HUD-style surfaces.
+ * No light theme.
  */
 :root,
 .dark {
-  --background: oklch(0.04 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.09 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.08 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  /* Electric-lime CTA buttons on black — the Higgsfield signature. */
-  --primary: oklch(0.92 0.21 124);
-  --primary-foreground: oklch(0.18 0.02 124);
-  --secondary: oklch(0.18 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.16 0 0);
-  --muted-foreground: oklch(0.64 0 0);
-  --accent: oklch(0.2 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.62 0.21 18);
+  --background: oklch(0.09 0.035 260);
+  --foreground: oklch(0.96 0.02 220);
+  --card: oklch(0.14 0.04 260);
+  --card-foreground: oklch(0.96 0.02 220);
+  --popover: oklch(0.12 0.04 260);
+  --popover-foreground: oklch(0.96 0.02 220);
+  /* Neon cyan CTAs */
+  --primary: oklch(0.82 0.14 210);
+  --primary-foreground: oklch(0.14 0.04 260);
+  --secondary: oklch(0.2 0.04 265);
+  --secondary-foreground: oklch(0.94 0.02 220);
+  --muted: oklch(0.18 0.035 265);
+  --muted-foreground: oklch(0.72 0.04 230);
+  --accent: oklch(0.22 0.05 270);
+  --accent-foreground: oklch(0.96 0.02 220);
+  --destructive: oklch(0.62 0.22 25);
   --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(1 0 0 / 9%);
-  --input: oklch(1 0 0 / 12%);
-  --ring: oklch(0.92 0.21 124);
-  --radius: 0.75rem;
+  --border: oklch(0.72 0.12 210 / 18%);
+  --input: oklch(0.72 0.12 210 / 22%);
+  --ring: oklch(0.82 0.14 210);
+  --radius: 0.35rem;
 
-  /* Brand accents: electric lime + hot pink. */
-  --brand: oklch(0.92 0.21 124);
-  --brand-2: oklch(0.66 0.24 357);
+  /* Brand: cyan + magenta */
+  --brand: oklch(0.82 0.14 210);
+  --brand-2: oklch(0.7 0.22 330);
+  --hud-line: oklch(0.82 0.14 210 / 25%);
+  --scanline: oklch(0.82 0.14 210 / 4%);
 }
 
 @theme inline {
@@ -59,10 +60,13 @@
   --color-ring: var(--ring);
   --color-brand: var(--brand);
   --color-brand-2: var(--brand-2);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 4px);
+  --radius-xl: calc(var(--radius) + 8px);
+  --font-sans: "Exo 2", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Orbitron", "Exo 2", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Share Tech Mono", ui-monospace, monospace;
 }
 
 @layer base {
@@ -72,8 +76,6 @@
   html {
     color-scheme: dark;
   }
-  /* Interactive elements should feel clickable (browsers default buttons to the
-   * arrow cursor). Disabled controls fall back to not-allowed. */
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),
   label[for],
@@ -87,55 +89,78 @@
   body {
     min-height: 100vh;
     background-color: var(--color-background);
-    /* Flat black canvas with a single faint lime glow at the top (Higgsfield). */
-    background-image: radial-gradient(
-      ellipse 70rem 30rem at 50% -10rem,
-      oklch(0.92 0.21 124 / 7%),
-      transparent 70%
-    );
+    /* Deep space: grid + dual nebula glows (cyan + magenta). */
+    background-image:
+      radial-gradient(ellipse 80rem 40rem at 50% -12rem, oklch(0.55 0.18 210 / 18%), transparent 60%),
+      radial-gradient(ellipse 50rem 40rem at 100% 100%, oklch(0.45 0.2 330 / 12%), transparent 55%),
+      radial-gradient(ellipse 40rem 30rem at 0% 80%, oklch(0.4 0.12 260 / 14%), transparent 50%),
+      linear-gradient(oklch(0.82 0.14 210 / 3.5%) 1px, transparent 1px),
+      linear-gradient(90deg, oklch(0.82 0.14 210 / 3.5%) 1px, transparent 1px);
+    background-size:
+      auto,
+      auto,
+      auto,
+      48px 48px,
+      48px 48px;
     background-attachment: fixed;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat, no-repeat, no-repeat, repeat, repeat;
     color: var(--color-foreground);
-    font-family:
-      ui-sans-serif,
-      system-ui,
-      -apple-system,
-      "Segoe UI",
-      Roboto,
-      Helvetica,
-      Arial,
-      sans-serif;
+    font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
   }
+
+  /* Subtle CRT scanlines over the whole app */
+  body::before {
+    content: "";
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      var(--scanline) 2px,
+      var(--scanline) 4px
+    );
+    opacity: 0.45;
+    mix-blend-mode: soft-light;
+  }
+
   h1,
   h2,
   h3 {
-    letter-spacing: -0.02em;
+    font-family: var(--font-display);
+    letter-spacing: 0.04em;
+    text-transform: none;
   }
+  h1 {
+    letter-spacing: 0.06em;
+  }
+
   ::selection {
-    background-color: oklch(0.92 0.21 124 / 35%);
+    background-color: oklch(0.82 0.14 210 / 40%);
     color: oklch(0.99 0 0);
   }
 
-  /* Sleek, unobtrusive dark scrollbars. */
   * {
     scrollbar-width: thin;
-    scrollbar-color: oklch(1 0 0 / 14%) transparent;
+    scrollbar-color: oklch(0.82 0.14 210 / 35%) transparent;
   }
   *::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
   }
   *::-webkit-scrollbar-thumb {
-    background-color: oklch(1 0 0 / 12%);
-    border-radius: 9999px;
+    background-color: oklch(0.82 0.14 210 / 28%);
+    border-radius: 2px;
     border: 2px solid transparent;
     background-clip: padding-box;
   }
   *::-webkit-scrollbar-thumb:hover {
-    background-color: oklch(1 0 0 / 22%);
+    background-color: oklch(0.82 0.14 210 / 50%);
   }
 }
 
@@ -144,61 +169,98 @@
     text-wrap: balance;
   }
 
-  /* Subtle white→muted gradient text for hero headlines. */
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-hud {
+    font-family: var(--font-mono);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
   .text-gradient {
     background: linear-gradient(
       180deg,
-      oklch(0.99 0 0),
-      oklch(0.72 0.01 286)
+      oklch(0.98 0.02 220),
+      oklch(0.72 0.08 250)
     );
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
 
-  /* Brand lime → white hero highlight (Higgsfield-style). */
+  /* Cyan → magenta hero highlight */
   .text-gradient-brand {
     background: linear-gradient(
       115deg,
-      oklch(0.98 0 0) 0%,
-      oklch(0.92 0.21 124) 45%,
-      oklch(0.88 0.18 145) 100%
+      oklch(0.95 0.04 210) 0%,
+      oklch(0.82 0.14 210) 40%,
+      oklch(0.72 0.2 320) 100%
     );
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    filter: drop-shadow(0 0 18px oklch(0.82 0.14 210 / 35%));
   }
 
-  /* Frosted glass surfaces for sticky chrome. */
   .glass {
-    background-color: oklch(0.04 0 0 / 72%);
-    backdrop-filter: blur(16px) saturate(1.2);
-    -webkit-backdrop-filter: blur(16px) saturate(1.2);
+    background-color: oklch(0.1 0.04 260 / 78%);
+    backdrop-filter: blur(18px) saturate(1.35);
+    -webkit-backdrop-filter: blur(18px) saturate(1.35);
+    border-color: oklch(0.82 0.14 210 / 16%);
+    box-shadow:
+      inset 0 1px 0 oklch(0.9 0.1 210 / 12%),
+      0 0 0 1px oklch(0.82 0.14 210 / 6%);
   }
 
-  /* Soft lime border glow on hoverable cards. */
   .glow-card {
-    box-shadow: 0 0 0 1px oklch(1 0 0 / 6%), 0 12px 40px -20px oklch(0 0 0 / 80%);
+    box-shadow:
+      0 0 0 1px oklch(0.82 0.14 210 / 10%),
+      0 12px 40px -20px oklch(0 0 0 / 80%),
+      inset 0 1px 0 oklch(1 0 0 / 4%);
     transition:
       border-color 0.25s ease,
       box-shadow 0.25s ease,
       transform 0.25s ease;
   }
   .glow-card:hover {
-    border-color: oklch(0.92 0.21 124 / 35%);
+    border-color: oklch(0.82 0.14 210 / 45%);
     box-shadow:
-      0 0 0 1px oklch(0.92 0.21 124 / 18%),
-      0 16px 48px -16px oklch(0.92 0.21 124 / 18%),
-      0 12px 40px -20px oklch(0 0 0 / 80%);
+      0 0 0 1px oklch(0.82 0.14 210 / 28%),
+      0 0 32px -8px oklch(0.82 0.14 210 / 35%),
+      0 16px 48px -16px oklch(0.7 0.2 330 / 15%),
+      inset 0 1px 0 oklch(0.9 0.1 210 / 12%);
   }
 
-  /* Indeterminate progress shimmer for generation states. */
+  /* HUD panel: clipped corners via mask-like borders */
+  .hud-panel {
+    position: relative;
+    border: 1px solid oklch(0.82 0.14 210 / 22%);
+    background:
+      linear-gradient(135deg, oklch(0.82 0.14 210 / 6%) 0%, transparent 40%),
+      oklch(0.14 0.04 260 / 85%);
+    box-shadow:
+      inset 0 0 40px oklch(0.5 0.1 260 / 20%),
+      0 0 24px -12px oklch(0.82 0.14 210 / 25%);
+    clip-path: polygon(
+      0 10px,
+      10px 0,
+      calc(100% - 10px) 0,
+      100% 10px,
+      100% calc(100% - 10px),
+      calc(100% - 10px) 100%,
+      10px 100%,
+      0 calc(100% - 10px)
+    );
+  }
+
   .shimmer {
     background: linear-gradient(
       90deg,
-      oklch(1 0 0 / 4%) 0%,
-      oklch(0.92 0.21 124 / 22%) 50%,
-      oklch(1 0 0 / 4%) 100%
+      oklch(0.82 0.14 210 / 4%) 0%,
+      oklch(0.82 0.14 210 / 28%) 50%,
+      oklch(0.7 0.2 330 / 12%) 100%
     );
     background-size: 200% 100%;
     animation: shimmer 1.6s ease-in-out infinite;
@@ -210,6 +272,35 @@
 
   .animate-pulse-soft {
     animation: pulse-soft 2s ease-in-out infinite;
+  }
+
+  .animate-glow-pulse {
+    animation: glow-pulse 3s ease-in-out infinite;
+  }
+
+  /* Corner tick marks for HUD chrome */
+  .hud-corners {
+    position: relative;
+  }
+  .hud-corners::before,
+  .hud-corners::after {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-color: oklch(0.82 0.14 210 / 55%);
+    border-style: solid;
+    pointer-events: none;
+  }
+  .hud-corners::before {
+    top: 6px;
+    left: 6px;
+    border-width: 1.5px 0 0 1.5px;
+  }
+  .hud-corners::after {
+    bottom: 6px;
+    right: 6px;
+    border-width: 0 1.5px 1.5px 0;
   }
 }
 
@@ -240,5 +331,15 @@
   }
   50% {
     opacity: 0.55;
+  }
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 12px oklch(0.82 0.14 210 / 25%);
+  }
+  50% {
+    box-shadow: 0 0 28px oklch(0.82 0.14 210 / 45%);
   }
 }

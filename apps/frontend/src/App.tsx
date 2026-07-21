@@ -21,10 +21,19 @@ import { TermsPage } from "@/pages/TermsPage";
 export default function App() {
   return (
     <BrowserRouter>
-      <div className="min-h-screen">
+      <div className="relative min-h-screen">
+        {/* Side HUD rails */}
+        <div
+          aria-hidden
+          className="pointer-events-none fixed inset-y-0 left-0 z-30 hidden w-px bg-gradient-to-b from-transparent via-primary/40 to-transparent lg:block"
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none fixed inset-y-0 right-0 z-30 hidden w-px bg-gradient-to-b from-transparent via-primary/40 to-transparent lg:block"
+        />
         <PromoBanner />
         <Navbar />
-        <main>
+        <main className="relative">
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/video" element={<VideoPage />} />

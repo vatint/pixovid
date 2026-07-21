@@ -12,9 +12,12 @@ export function LegalPage({
 }) {
   return (
     <div className="mx-auto max-w-3xl px-4 py-12 lg:py-16">
-      <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">{title}</h1>
-      <p className="mt-2 text-sm text-muted-foreground">Last updated: {updated}</p>
-      <div className="mt-8 space-y-8">{children}</div>
+      <p className="font-hud mb-3 text-[10px] text-primary/80">DOCUMENT // LEGAL</p>
+      <h1 className="font-display text-3xl font-bold tracking-wider sm:text-4xl">{title}</h1>
+      <p className="font-hud mt-2 text-[11px] text-muted-foreground">Last updated: {updated}</p>
+      <div className="mt-8 space-y-8 rounded-sm border border-primary/15 bg-card/40 p-6 sm:p-8">
+        {children}
+      </div>
     </div>
   );
 }
@@ -23,7 +26,7 @@ export function LegalPage({
 export function LegalSection({ heading, children }: { heading: string; children: ReactNode }) {
   return (
     <section className="space-y-2">
-      <h2 className="text-lg font-semibold text-foreground">{heading}</h2>
+      <h2 className="font-display text-lg font-semibold tracking-wide text-primary">{heading}</h2>
       <div className="space-y-2 text-sm leading-7 text-muted-foreground">{children}</div>
     </section>
   );

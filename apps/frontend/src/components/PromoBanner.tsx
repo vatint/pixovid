@@ -5,7 +5,7 @@ import { X } from "lucide-react";
 const STORAGE_KEY = "va_promo_dismissed";
 
 /**
- * Full-width electric-lime promo bar pinned above the navbar (Higgsfield-style).
+ * Full-width cyan HUD promo bar pinned above the navbar.
  * Dismissible; the choice is remembered in localStorage.
  */
 export function PromoBanner() {
@@ -15,17 +15,17 @@ export function PromoBanner() {
   if (dismissed) return null;
 
   return (
-    <div className="relative z-50 flex items-center justify-center bg-primary px-10 py-2 text-primary-foreground">
+    <div className="relative z-50 flex items-center justify-center border-b border-primary/30 bg-gradient-to-r from-primary via-primary to-brand-2 px-10 py-2 text-primary-foreground shadow-[0_0_24px_oklch(0.82_0.14_210/0.35)]">
       <Link
         to="/billing"
-        className="group flex items-center gap-3 text-center text-sm font-semibold tracking-wide"
+        className="group font-hud flex items-center gap-3 text-center text-xs font-semibold tracking-[0.14em] sm:text-sm"
       >
         <span className="hidden group-hover:underline sm:inline">
-          SIGN UP AND GET ADDITIONAL DISCOUNT ON PREMIUM PLANS
+          SIGNAL BOOST — SIGN UP FOR PREMIUM CREDIT PACKS
         </span>
-        <span className="group-hover:underline sm:hidden">EXTRA DISCOUNT ON PREMIUM PLANS</span>
-        <span className="inline-flex items-center gap-1 rounded-full bg-brand-2 px-2.5 py-0.5 text-xs font-bold text-white">
-          EXTRA DISCOUNT
+        <span className="group-hover:underline sm:hidden">PREMIUM CREDIT SIGNAL</span>
+        <span className="inline-flex items-center gap-1 rounded-sm border border-white/20 bg-black/25 px-2.5 py-0.5 text-[10px] font-bold tracking-widest text-white">
+          UPLINK
         </span>
       </Link>
       <button
@@ -35,7 +35,7 @@ export function PromoBanner() {
           localStorage.setItem(STORAGE_KEY, "1");
           setDismissed(true);
         }}
-        className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full p-1 text-primary-foreground/70 transition-colors hover:bg-black/10 hover:text-primary-foreground"
+        className="absolute right-3 top-1/2 -translate-y-1/2 rounded-sm p-1 text-primary-foreground/70 transition-colors hover:bg-black/15 hover:text-primary-foreground"
       >
         <X className="h-4 w-4" />
       </button>

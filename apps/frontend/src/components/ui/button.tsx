@@ -4,23 +4,25 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50 active:scale-[0.98] [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-semibold tracking-wide transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50 active:scale-[0.98] [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
         default:
-          "bg-primary text-primary-foreground shadow-sm hover:bg-primary/90 hover:shadow-[0_4px_20px_-4px_rgba(198,240,50,0.35)]",
-        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+          "bg-primary text-primary-foreground shadow-[0_0_20px_-4px_oklch(0.82_0.14_210/0.55)] hover:bg-primary/90 hover:shadow-[0_0_28px_-2px_oklch(0.82_0.14_210/0.7)]",
+        destructive:
+          "bg-destructive text-destructive-foreground shadow-[0_0_16px_-4px_oklch(0.62_0.22_25/0.5)] hover:bg-destructive/90",
         outline:
-          "border border-input bg-white/[0.02] text-foreground hover:bg-accent hover:text-accent-foreground hover:border-white/20",
-        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
+          "border border-primary/35 bg-primary/5 text-foreground hover:bg-primary/10 hover:border-primary/60 hover:shadow-[0_0_16px_-6px_oklch(0.82_0.14_210/0.4)]",
+        secondary:
+          "bg-secondary text-secondary-foreground border border-primary/15 hover:bg-secondary/80 hover:border-primary/30",
+        ghost: "hover:bg-accent hover:text-accent-foreground hover:text-primary",
+        link: "text-primary underline-offset-4 hover:underline hover:text-primary/90",
       },
       size: {
         default: "h-9 px-4 py-2",
-        sm: "h-8 rounded-md px-3 text-xs",
-        lg: "h-11 rounded-xl px-8",
+        sm: "h-8 rounded-sm px-3 text-xs tracking-wider uppercase font-hud",
+        lg: "h-11 rounded-md px-8 font-display text-[0.95rem] tracking-wider",
         icon: "h-9 w-9",
       },
     },

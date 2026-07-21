@@ -2,10 +2,10 @@ import { cn } from "@/lib/utils";
 import type { GenerationStatus } from "@/lib/api";
 
 const statusStyles: Record<GenerationStatus, string> = {
-  PENDING: "bg-yellow-500/15 text-yellow-400 ring-1 ring-yellow-500/20",
-  IN_PROGRESS: "bg-primary/15 text-primary ring-1 ring-primary/25",
-  COMPLETED: "bg-green-500/15 text-green-400 ring-1 ring-green-500/20",
-  FAILED: "bg-destructive/15 text-destructive ring-1 ring-destructive/20",
+  PENDING: "bg-amber-400/10 text-amber-300 ring-1 ring-amber-400/30 font-hud tracking-wider",
+  IN_PROGRESS: "bg-primary/15 text-primary ring-1 ring-primary/35 font-hud tracking-wider shadow-[0_0_12px_-4px_oklch(0.82_0.14_210/0.5)]",
+  COMPLETED: "bg-cyan-400/10 text-cyan-300 ring-1 ring-cyan-400/30 font-hud tracking-wider",
+  FAILED: "bg-destructive/15 text-destructive ring-1 ring-destructive/30 font-hud tracking-wider",
 };
 
 const labels: Record<GenerationStatus, string> = {

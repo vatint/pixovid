@@ -97,11 +97,11 @@ export function PricingPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-12 lg:px-6">
       <div className="mx-auto max-w-2xl text-center">
-        <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/10 px-3 py-1 text-sm text-primary">
+        <div className="font-hud mb-4 inline-flex items-center gap-2 rounded-sm border border-primary/30 bg-primary/10 px-3 py-1 text-[11px] tracking-wider text-primary">
           <Coins className="h-4 w-4" />
-          Simple prepaid credits
+          PREPAID CREDIT UPLINK
         </div>
-        <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
+        <h1 className="font-display text-4xl font-semibold tracking-wider sm:text-5xl">
           Pricing that matches your <span className="text-gradient-brand">output</span>
         </h1>
         <p className="mt-4 text-lg text-muted-foreground">
@@ -120,10 +120,10 @@ export function PricingPage() {
         ].map((row) => (
           <div
             key={row.label}
-            className="rounded-2xl border border-white/[0.08] bg-card/60 px-4 py-4 text-center"
+            className="rounded-sm border border-primary/15 bg-card/60 px-4 py-4 text-center shadow-[inset_0_0_24px_oklch(0.5_0.1_260/0.1)]"
           >
             <row.icon className="mx-auto h-5 w-5 text-primary" />
-            <div className="mt-2 text-sm font-semibold">{row.label}</div>
+            <div className="font-display mt-2 text-sm font-semibold tracking-wide">{row.label}</div>
             <div className="mt-1 text-2xl font-bold tabular-nums">{row.cost}</div>
             <div className="text-xs text-muted-foreground">credits each</div>
             <div className="mt-2 text-[11px] text-muted-foreground">{row.hint}</div>
@@ -142,16 +142,18 @@ export function PricingPage() {
             <div
               key={pack.id}
               className={cn(
-                "relative flex flex-col rounded-3xl border bg-card p-6 shadow-xl shadow-black/30",
-                featured ? "border-primary/40 ring-1 ring-primary/30" : "border-white/[0.08]",
+                "relative flex flex-col rounded-sm border bg-card p-6 shadow-xl shadow-black/40",
+                featured
+                  ? "border-primary/45 shadow-[0_0_40px_-12px_oklch(0.82_0.14_210/0.4)] ring-1 ring-primary/30"
+                  : "border-primary/15",
               )}
             >
               {featured && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-primary px-3 py-0.5 text-[11px] font-bold uppercase tracking-wide text-primary-foreground">
-                  Best value
+                <span className="font-hud absolute -top-3 left-1/2 -translate-x-1/2 rounded-sm bg-primary px-3 py-0.5 text-[10px] font-bold tracking-wider text-primary-foreground shadow-[0_0_16px_oklch(0.82_0.14_210/0.5)]">
+                  BEST VALUE
                 </span>
               )}
-              <h2 className="text-lg font-semibold">{pack.name}</h2>
+              <h2 className="font-display text-lg font-semibold tracking-wide">{pack.name}</h2>
               <p className="mt-1 text-sm text-muted-foreground">{pack.description}</p>
               <div className="mt-5 flex items-baseline gap-1">
                 <span className="text-4xl font-bold tracking-tight">

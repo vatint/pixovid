@@ -21,29 +21,31 @@ const LEGAL_LINKS = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-white/[0.08] bg-black">
+    <footer className="relative border-t border-primary/20 bg-background/90">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
       <div className="mx-auto grid max-w-[1600px] gap-10 px-4 py-12 lg:grid-cols-[1.4fr_1fr_1fr_1fr] lg:px-6">
-        {/* Brand */}
         <div>
           <Link to="/" className="flex items-center gap-2.5">
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
+            <span className="flex h-8 w-8 items-center justify-center rounded-sm border border-primary/40 bg-primary/15 text-primary shadow-[0_0_16px_-4px_oklch(0.82_0.14_210/0.55)]">
               <Sparkles className="h-4 w-4" />
             </span>
-            <span className="text-[15px] font-semibold tracking-tight">Pixovid</span>
+            <span className="font-display text-[15px] font-semibold tracking-[0.18em] uppercase">
+              Pixovid
+            </span>
           </Link>
-          <p className="mt-3 max-w-xs text-sm text-muted-foreground">
-            The arena where AI video comes to life. Generate cinematic video, images and
-            template renders in minutes.
+          <p className="mt-3 max-w-xs text-sm leading-6 text-muted-foreground">
+            Mission control for AI video. Generate cinematic clips, images, and template
+            renders from deep space.
           </p>
+          <p className="font-hud mt-4 text-[10px] text-primary/70">SYS.STATUS // ONLINE</p>
         </div>
 
-        {/* Product */}
         <div>
-          <h3 className="text-sm font-semibold">Product</h3>
+          <h3 className="font-hud text-[11px] font-semibold text-primary">Product</h3>
           <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
             {PRODUCT_LINKS.map((l) => (
               <li key={l.to}>
-                <Link to={l.to} className="transition-colors hover:text-foreground">
+                <Link to={l.to} className="transition-colors hover:text-primary">
                   {l.label}
                 </Link>
               </li>
@@ -51,13 +53,12 @@ export function Footer() {
           </ul>
         </div>
 
-        {/* Legal */}
         <div>
-          <h3 className="text-sm font-semibold">Legal</h3>
+          <h3 className="font-hud text-[11px] font-semibold text-primary">Legal</h3>
           <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
             {LEGAL_LINKS.map((l) => (
               <li key={l.to}>
-                <Link to={l.to} className="transition-colors hover:text-foreground">
+                <Link to={l.to} className="transition-colors hover:text-primary">
                   {l.label}
                 </Link>
               </li>
@@ -65,14 +66,13 @@ export function Footer() {
           </ul>
         </div>
 
-        {/* Contact */}
         <div>
-          <h3 className="text-sm font-semibold">Contact</h3>
+          <h3 className="font-hud text-[11px] font-semibold text-primary">Contact</h3>
           <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
             <li>
               <a
                 href={`mailto:${CONTACT_EMAIL}`}
-                className="transition-colors hover:text-foreground"
+                className="transition-colors hover:text-primary"
               >
                 {CONTACT_EMAIL}
               </a>
@@ -81,12 +81,12 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-white/[0.06]">
-        <div className="mx-auto flex max-w-[1600px] flex-col items-center justify-between gap-2 px-4 py-5 text-xs text-muted-foreground sm:flex-row lg:px-6">
-          <span>© {new Date().getFullYear()} Pixovid. All rights reserved.</span>
+      <div className="border-t border-primary/10">
+        <div className="font-hud mx-auto flex max-w-[1600px] flex-col items-center justify-between gap-2 px-4 py-5 text-[10px] tracking-wider text-muted-foreground sm:flex-row lg:px-6">
+          <span>© {new Date().getFullYear()} PIXOVID // ALL RIGHTS RESERVED</span>
           <div className="flex items-center gap-4">
             {LEGAL_LINKS.map((l) => (
-              <Link key={l.to} to={l.to} className="transition-colors hover:text-foreground">
+              <Link key={l.to} to={l.to} className="transition-colors hover:text-primary">
                 {l.label}
               </Link>
             ))}

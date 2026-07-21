@@ -42,14 +42,15 @@ export function Navbar() {
       : location.pathname === to || location.pathname.startsWith(`${to}/`);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-white/10 glass">
+    <header className="sticky top-0 z-40 border-b border-primary/20 glass">
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
       <div className="mx-auto flex h-14 max-w-[1600px] items-center gap-4 px-4 lg:gap-6 lg:px-6">
         {/* Logo */}
         <Link to="/" className="flex shrink-0 items-center gap-2.5" onClick={() => setMobileOpen(false)}>
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground shadow-[0_0_20px_-4px_oklch(0.92_0.21_124/0.55)]">
+          <span className="flex h-8 w-8 items-center justify-center rounded-sm border border-primary/40 bg-primary/15 text-primary shadow-[0_0_20px_-2px_oklch(0.82_0.14_210/0.65)] animate-glow-pulse">
             <Sparkles className="h-4 w-4" />
           </span>
-          <span className="hidden text-[15px] font-semibold tracking-tight sm:inline">
+          <span className="font-display hidden text-[15px] font-semibold tracking-[0.18em] uppercase sm:inline">
             Pixovid
           </span>
         </Link>
@@ -59,10 +60,10 @@ export function Navbar() {
           <Link
             to="/"
             className={cn(
-              "shrink-0 rounded-md px-2.5 py-1.5 text-sm font-medium transition-colors",
+              "font-hud shrink-0 rounded-sm px-2.5 py-1.5 text-[11px] font-medium transition-colors",
               isActive("/")
-                ? "text-primary"
-                : "text-muted-foreground hover:text-foreground",
+                ? "bg-primary/10 text-primary shadow-[inset_0_-1px_0_0_oklch(0.82_0.14_210)]"
+                : "text-muted-foreground hover:text-primary",
             )}
           >
             Explore
@@ -72,15 +73,15 @@ export function Navbar() {
               key={to}
               to={to}
               className={cn(
-                "flex shrink-0 items-center gap-1.5 rounded-md px-2.5 py-1.5 text-sm font-medium transition-colors",
+                "font-hud flex shrink-0 items-center gap-1.5 rounded-sm px-2.5 py-1.5 text-[11px] font-medium transition-colors",
                 isActive(to)
-                  ? "text-primary"
-                  : "text-muted-foreground hover:text-foreground",
+                  ? "bg-primary/10 text-primary shadow-[inset_0_-1px_0_0_oklch(0.82_0.14_210)]"
+                  : "text-muted-foreground hover:text-primary",
               )}
             >
               <span className="whitespace-nowrap">{label}</span>
               {badge && (
-                <span className="rounded bg-primary px-1.5 py-0.5 text-[10px] font-bold leading-none text-primary-foreground">
+                <span className="rounded-sm bg-brand-2 px-1.5 py-0.5 text-[9px] font-bold leading-none tracking-wider text-white shadow-[0_0_10px_oklch(0.7_0.22_330/0.5)]">
                   {badge}
                 </span>
               )}
@@ -96,13 +97,13 @@ export function Navbar() {
                 to="/billing"
                 title="Credits & billing"
                 className={cn(
-                  "flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-sm font-medium transition-colors hover:bg-white/[0.08]",
-                  location.pathname === "/billing" && "border-primary/40 text-primary",
+                  "font-hud flex items-center gap-1.5 rounded-sm border border-primary/25 bg-primary/5 px-3 py-1.5 text-[11px] font-medium transition-colors hover:bg-primary/10 hover:border-primary/40",
+                  location.pathname === "/billing" && "border-primary/50 text-primary shadow-[0_0_12px_-4px_oklch(0.82_0.14_210/0.5)]",
                 )}
               >
                 <Coins className="h-4 w-4 text-primary" />
                 <span className="tabular-nums">{me?.credits ?? 0}</span>
-                <span className="hidden text-muted-foreground sm:inline">credits</span>
+                <span className="hidden text-muted-foreground sm:inline">CR</span>
               </Link>
               <div className="hidden items-center gap-2 sm:flex">
                 {session.user.image ? (
@@ -128,23 +129,23 @@ export function Navbar() {
             <>
               <Link
                 to="/pricing"
-                className="relative hidden items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-sm font-medium text-foreground transition-colors hover:bg-white/[0.08] sm:flex"
+                className="font-hud relative hidden items-center gap-1.5 rounded-sm border border-primary/25 bg-primary/5 px-3 py-1.5 text-[11px] font-medium text-foreground transition-colors hover:bg-primary/10 sm:flex"
               >
-                <Tag className="h-3.5 w-3.5" />
+                <Tag className="h-3.5 w-3.5 text-primary" />
                 Pricing
-                <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-brand-2 px-1.5 py-px text-[9px] font-bold leading-none text-white">
+                <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-sm bg-brand-2 px-1.5 py-px text-[9px] font-bold leading-none tracking-wider text-white">
                   30% OFF
                 </span>
               </Link>
-              <span className="hidden h-5 w-px bg-white/10 sm:block" />
+              <span className="hidden h-5 w-px bg-primary/20 sm:block" />
               <button
                 type="button"
                 onClick={() => setAuthOpen(true)}
-                className="hidden text-sm font-medium text-muted-foreground transition-colors hover:text-foreground sm:inline"
+                className="font-hud hidden text-[11px] font-medium text-muted-foreground transition-colors hover:text-primary sm:inline"
               >
                 Login
               </button>
-              <Button className="rounded-full px-5" onClick={() => setAuthOpen(true)}>
+              <Button className="rounded-sm px-5 tracking-wider" onClick={() => setAuthOpen(true)}>
                 Sign up
               </Button>
             </>
@@ -165,14 +166,14 @@ export function Navbar() {
 
       {/* Mobile drawer */}
       {mobileOpen && (
-        <div className="border-t border-white/10 bg-black/95 px-4 py-3 md:hidden">
+        <div className="border-t border-primary/20 bg-background/95 px-4 py-3 md:hidden">
           <nav className="flex flex-col gap-1">
             <Link
               to="/"
               onClick={() => setMobileOpen(false)}
               className={cn(
-                "rounded-lg px-3 py-2.5 text-sm font-medium transition-colors",
-                isActive("/") ? "bg-primary/10 text-primary" : "text-muted-foreground hover:bg-white/[0.04] hover:text-foreground",
+                "font-hud rounded-sm px-3 py-2.5 text-xs font-medium transition-colors",
+                isActive("/") ? "bg-primary/10 text-primary" : "text-muted-foreground hover:bg-primary/5 hover:text-primary",
               )}
             >
               Explore
@@ -183,13 +184,13 @@ export function Navbar() {
                 to={to}
                 onClick={() => setMobileOpen(false)}
                 className={cn(
-                  "flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors",
-                  isActive(to) ? "bg-primary/10 text-primary" : "text-muted-foreground hover:bg-white/[0.04] hover:text-foreground",
+                  "font-hud flex items-center gap-2 rounded-sm px-3 py-2.5 text-xs font-medium transition-colors",
+                  isActive(to) ? "bg-primary/10 text-primary" : "text-muted-foreground hover:bg-primary/5 hover:text-primary",
                 )}
               >
                 {label}
                 {badge && (
-                  <span className="rounded bg-primary px-1.5 py-0.5 text-[10px] font-bold leading-none text-primary-foreground">
+                  <span className="rounded-sm bg-brand-2 px-1.5 py-0.5 text-[9px] font-bold leading-none tracking-wider text-white">
                     {badge}
                   </span>
                 )}
@@ -202,7 +203,7 @@ export function Navbar() {
                   setMobileOpen(false);
                   setAuthOpen(true);
                 }}
-                className="mt-1 rounded-lg px-3 py-2.5 text-left text-sm font-medium text-muted-foreground hover:bg-white/[0.04] hover:text-foreground"
+                className="font-hud mt-1 rounded-sm px-3 py-2.5 text-left text-xs font-medium text-muted-foreground hover:bg-primary/5 hover:text-primary"
               >
                 Login
               </button>

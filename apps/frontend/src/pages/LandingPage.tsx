@@ -203,16 +203,16 @@ function Clip({ src, className }: { src: string; className?: string }) {
 function FeaturedCard({ clip }: { clip: ShowcaseClip }) {
   return (
     <div className="group w-[300px] shrink-0 snap-start sm:w-[440px] lg:w-[520px]">
-      <div className="relative overflow-hidden rounded-2xl border border-white/[0.08] bg-card">
+      <div className="relative overflow-hidden rounded-sm border border-primary/20 bg-card shadow-[0_0_24px_-12px_oklch(0.82_0.14_210/0.25)]">
         <Clip
           src={clip.src}
           className="aspect-video h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
         />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-        <span className="absolute bottom-3 right-3 rounded-md bg-primary px-2 py-0.5 text-xs font-extrabold tracking-tight text-primary-foreground">
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+        <span className="font-hud absolute bottom-3 right-3 rounded-sm bg-primary px-2 py-0.5 text-[10px] font-extrabold tracking-wider text-primary-foreground shadow-[0_0_12px_oklch(0.82_0.14_210/0.45)]">
           4K
         </span>
-        <span className="absolute left-3 top-3 rounded-full border border-white/15 bg-black/50 px-2.5 py-1 text-xs font-medium text-white backdrop-blur">
+        <span className="font-hud absolute left-3 top-3 rounded-sm border border-primary/30 bg-background/70 px-2.5 py-1 text-[10px] font-medium tracking-wider text-primary backdrop-blur">
           {clip.model}
         </span>
       </div>
@@ -226,18 +226,18 @@ function FeaturedCard({ clip }: { clip: ShowcaseClip }) {
 
 function MasonryTile({ clip }: { clip: ShowcaseClip }) {
   return (
-    <div className="group relative mb-4 break-inside-avoid overflow-hidden rounded-2xl border border-white/[0.08] bg-card shadow-lg shadow-black/30 transition-all duration-300 hover:border-primary/30 hover:shadow-[0_16px_48px_-20px_oklch(0.92_0.21_124/0.25)]">
+    <div className="group relative mb-4 break-inside-avoid overflow-hidden rounded-sm border border-primary/15 bg-card shadow-lg shadow-black/40 transition-all duration-300 hover:border-primary/40 hover:shadow-[0_16px_48px_-20px_oklch(0.82_0.14_210/0.35)]">
       <div className={`relative w-full ${ASPECT_CLASS[clip.aspect]}`}>
         <Clip
           src={clip.src}
           className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
         />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-background/85 via-background/20 to-transparent" />
 
-        <span className="absolute left-3 top-3 rounded-full border border-white/15 bg-black/50 px-2.5 py-1 text-xs font-medium text-white backdrop-blur">
+        <span className="font-hud absolute left-3 top-3 rounded-sm border border-primary/30 bg-background/70 px-2.5 py-1 text-[10px] font-medium tracking-wider text-primary backdrop-blur">
           {clip.model}
         </span>
-        <span className="absolute right-3 top-3 rounded-full bg-primary px-2 py-0.5 text-[11px] font-bold uppercase tracking-wide text-primary-foreground">
+        <span className="font-hud absolute right-3 top-3 rounded-sm bg-primary px-2 py-0.5 text-[10px] font-bold tracking-wider text-primary-foreground shadow-[0_0_10px_oklch(0.82_0.14_210/0.4)]">
           {clip.category}
         </span>
 
@@ -279,7 +279,7 @@ const TEMPLATE_BANNERS: Banner[] = [
 
 function TemplateBanner({ banner, cta }: { banner: Banner; cta: React.ReactNode }) {
   return (
-    <div className="group relative overflow-hidden rounded-3xl border border-white/10 shadow-2xl shadow-black/40">
+    <div className="group relative overflow-hidden rounded-sm border border-primary/25 shadow-2xl shadow-black/50">
       <video
         className="aspect-[16/11] w-full object-cover transition-transform duration-700 group-hover:scale-105 sm:aspect-[16/6]"
         src={banner.src}
@@ -290,17 +290,17 @@ function TemplateBanner({ banner, cta }: { banner: Banner; cta: React.ReactNode 
         preload="metadata"
       />
       {/* Localized scrim only in the bottom-left corner — keeps most of the video bright. */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-black/80 via-black/15 to-transparent" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-background/90 via-background/20 to-transparent" />
 
-      <span className="absolute right-4 top-4 -skew-x-6 rounded bg-primary px-2.5 py-0.5 text-base font-extrabold tracking-tight text-primary-foreground sm:right-6 sm:top-6 sm:text-xl">
+      <span className="font-hud absolute right-4 top-4 -skew-x-6 rounded-sm bg-primary px-2.5 py-0.5 text-base font-extrabold tracking-wider text-primary-foreground shadow-[0_0_20px_oklch(0.82_0.14_210/0.5)] sm:right-6 sm:top-6 sm:text-xl">
         4K
       </span>
 
       <div className="pointer-events-none absolute inset-x-0 bottom-0 flex max-w-2xl flex-col items-start p-5 text-left sm:p-8">
-        <span className="rounded-full bg-black/55 px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-white backdrop-blur sm:text-xs">
+        <span className="font-hud rounded-sm border border-primary/30 bg-background/70 px-3 py-1 text-[10px] font-bold tracking-wider text-primary backdrop-blur sm:text-[11px]">
           {banner.kicker}
         </span>
-        <h3 className="mt-2 text-3xl font-extrabold uppercase tracking-tight text-primary drop-shadow-[0_2px_18px_rgba(0,0,0,0.8)] sm:text-5xl">
+        <h3 className="font-display mt-2 text-3xl font-extrabold uppercase tracking-wider text-primary drop-shadow-[0_0_24px_oklch(0.82_0.14_210/0.55)] sm:text-5xl">
           {banner.title}
         </h3>
         <p className="mt-1 text-sm font-bold uppercase tracking-wide text-white/90 drop-shadow sm:text-base">
@@ -353,24 +353,24 @@ export function LandingPage() {
   );
 
   const tryTemplate = signedIn ? (
-    <Button asChild size="lg" className="rounded-full px-8">
+    <Button asChild size="lg" className="rounded-sm px-8">
       <Link to="/user/templates">Try template</Link>
     </Button>
   ) : (
-    <Button size="lg" className="rounded-full px-8" onClick={() => setAuthOpen(true)}>
+    <Button size="lg" className="rounded-sm px-8" onClick={() => setAuthOpen(true)}>
       Try template
     </Button>
   );
 
   const startCreating = signedIn ? (
-    <Button asChild size="lg" className="rounded-full px-6">
+    <Button asChild size="lg" className="rounded-sm px-6">
       <Link to="/video">
         Start creating
         <ArrowRight className="h-4 w-4" />
       </Link>
     </Button>
   ) : (
-    <Button size="lg" className="rounded-full px-6" onClick={() => setAuthOpen(true)}>
+    <Button size="lg" className="rounded-sm px-6" onClick={() => setAuthOpen(true)}>
       Start creating
       <ArrowRight className="h-4 w-4" />
     </Button>
@@ -380,23 +380,23 @@ export function LandingPage() {
     <div className="overflow-hidden">
       {/* Compact hero */}
       <section className="animate-fade-up mx-auto max-w-[1600px] px-4 pt-14 pb-10 lg:px-6">
-        <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/10 px-3.5 py-1.5 text-sm text-primary">
-          <Sparkles className="h-4 w-4" />
-          Real clips, real prompts — generated in Pixovid
+        <div className="font-hud mb-5 inline-flex items-center gap-2 rounded-sm border border-primary/30 bg-primary/10 px-3.5 py-1.5 text-[11px] tracking-wider text-primary shadow-[0_0_20px_-8px_oklch(0.82_0.14_210/0.6)]">
+          <Sparkles className="h-3.5 w-3.5" />
+          LIVE SIGNAL // REAL CLIPS GENERATED IN PIXOVID
         </div>
-        <h1 className="max-w-4xl text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
-          The arena where{" "}
-          <span className="text-gradient-brand">AI video</span> comes to life.
+        <h1 className="font-display max-w-4xl text-4xl font-semibold tracking-wider text-balance sm:text-5xl lg:text-6xl">
+          The command deck where{" "}
+          <span className="text-gradient-brand">AI video</span> ignites.
         </h1>
         <p className="mt-5 max-w-2xl text-lg leading-8 text-muted-foreground">
-          Browse a living wall of cinematic clips, then jump in and generate your own with
-          model controls, references and audio — all in one focused workspace.
+          Browse a living wall of cinematic clips, then jump into mission control — models,
+          references, audio, and templates in one focused sci-fi workspace.
         </p>
         <div className="mt-7 flex flex-col gap-3 sm:flex-row">
           {startCreating}
-          <Button asChild variant="outline" size="lg" className="rounded-full px-6">
+          <Button asChild variant="outline" size="lg" className="rounded-sm px-6">
             <Link to={signedIn ? "/user/templates" : "/video"}>
-              Explore the studio
+              Enter the studio
               <Play className="h-4 w-4" />
             </Link>
           </Button>
@@ -412,9 +412,9 @@ export function LandingPage() {
           ].map((s) => (
             <div
               key={s.k}
-              className="rounded-2xl border border-white/[0.08] bg-white/[0.02] px-4 py-3"
+              className="rounded-sm border border-primary/15 bg-card/50 px-4 py-3 shadow-[inset_0_0_24px_oklch(0.5_0.1_260/0.12)]"
             >
-              <div className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+              <div className="font-hud text-[10px] font-semibold tracking-wider text-primary/80">
                 {s.k}
               </div>
               <div className="mt-1 text-sm font-medium text-foreground/90">{s.v}</div>
@@ -425,7 +425,9 @@ export function LandingPage() {
 
       {/* Product tools */}
       <section className="mx-auto max-w-[1600px] px-4 pb-12 lg:px-6">
-        <h2 className="mb-4 text-lg font-semibold">Create with every tool</h2>
+        <h2 className="font-display mb-4 text-lg font-semibold tracking-wider">
+          Create with every module
+        </h2>
         <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
           {TOOLS.map((tool) => {
             const Icon = tool.icon;
@@ -439,12 +441,14 @@ export function LandingPage() {
                     setAuthOpen(true);
                   }
                 }}
-                className="glow-card group rounded-2xl border border-white/[0.08] bg-card/60 p-5"
+                className="glow-card group rounded-sm border border-primary/15 bg-card/60 p-5"
               >
-                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/15 text-primary ring-1 ring-primary/20 transition-transform group-hover:scale-105">
+                <span className="flex h-10 w-10 items-center justify-center rounded-sm border border-primary/25 bg-primary/10 text-primary shadow-[0_0_16px_-6px_oklch(0.82_0.14_210/0.5)] transition-transform group-hover:scale-105">
                   <Icon className="h-5 w-5" />
                 </span>
-                <h3 className="mt-4 text-base font-semibold">{tool.title}</h3>
+                <h3 className="font-display mt-4 text-base font-semibold tracking-wide">
+                  {tool.title}
+                </h3>
                 <p className="mt-1.5 text-sm leading-6 text-muted-foreground">
                   {tool.description}
                 </p>
@@ -515,10 +519,11 @@ export function LandingPage() {
 
       {/* Closing CTA */}
       <section className="mx-auto max-w-[1600px] px-4 pb-24 lg:px-6">
-        <div className="relative overflow-hidden rounded-3xl border border-white/[0.08] bg-card p-10 text-center">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,oklch(0.92_0.21_124/0.12),transparent_55%)]" />
+        <div className="hud-corners relative overflow-hidden rounded-lg border border-primary/20 bg-card p-10 text-center shadow-[0_0_48px_-16px_oklch(0.82_0.14_210/0.3)]">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,oklch(0.82_0.14_210/0.14),transparent_55%)]" />
           <div className="relative flex flex-col items-center justify-center gap-4">
-            <h2 className="text-2xl font-semibold sm:text-3xl">
+            <p className="font-hud text-[10px] text-primary/80">TRANSMISSION READY</p>
+            <h2 className="font-display text-2xl font-semibold tracking-wider sm:text-3xl">
               Your next clip is one prompt away.
             </h2>
             <p className="max-w-xl text-muted-foreground">
