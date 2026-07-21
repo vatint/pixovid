@@ -108,6 +108,17 @@ bun run dev
 - Frontend: http://localhost:5173  
 - Backend: http://localhost:4000  
 
+### Local development without Docker
+
+If Docker isn’t available, use portable Postgres + MinIO under `.tools/`:
+
+```sh
+bun install
+bun run dev:local    # downloads binaries once, starts DB + MinIO + apps
+```
+
+New accounts receive **120 welcome credits** so video/image can be tried once `OPENROUTER_API_KEY` is set in `apps/backend/.env`.
+
 Google OAuth redirect URI:
 
 ```

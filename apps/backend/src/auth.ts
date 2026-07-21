@@ -2,6 +2,10 @@ import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 import { prisma } from "@repo/db";
 import { env } from "./env.js";
+import { addCredits } from "./lib/credits.js";
+
+/** Free credits granted once when a user first signs up. */
+const WELCOME_CREDITS = 120;
 
 const socialProviders =
   env.GOOGLE_CLIENT_ID && env.GOOGLE_CLIENT_SECRET
@@ -33,6 +37,23 @@ export const auth = betterAuth({
   socialProviders,
   // env.FRONTEND_URL is a list of allowed origins (multiple domains).
   trustedOrigins: env.FRONTEND_URL,
+  databaseHooks: {
+    user: {
+      create: {
+        after: async (user) => {
+          try {
+            await addCredits(user.id, WELCOME_CREDITS, "BONUS", {
+              description: "Welcome bonus — try video, image, and face swap",
+              referenceType: "signup",
+              referenceId: user.id,
+            });
+          } catch (err) {
+            console.error("Failed to grant welcome credits:", err);
+          }
+        },
+      },
+    },
+  },
   ...(useCrossSiteCookies
     ? {
         advanced: {

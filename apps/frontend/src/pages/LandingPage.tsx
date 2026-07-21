@@ -432,12 +432,9 @@ export function LandingPage() {
             return (
               <Link
                 key={tool.to}
-                to={signedIn || tool.to === "/video" || tool.to === "/image" || tool.to === "/face-swap" ? tool.to : "/"}
+                to={signedIn || tool.to !== "/user/templates" ? tool.to : "/"}
                 onClick={(e) => {
-                  if (
-                    !signedIn &&
-                    (tool.to === "/user/templates" || tool.to === "/user/avatar")
-                  ) {
+                  if (!signedIn && tool.to === "/user/templates") {
                     e.preventDefault();
                     setAuthOpen(true);
                   }

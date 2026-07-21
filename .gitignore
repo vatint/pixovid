@@ -39,3 +39,7 @@ yarn-error.log*
 
 # Local DB backups (contain real data — never commit)
 backups/
+
+# Portable local infra (Postgres data, MinIO data, binaries, logs)
+.tools/
+
