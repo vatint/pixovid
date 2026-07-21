@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Coins, LogOut, Menu, Sparkles, Tag, X } from "lucide-react";
+import { Coins, LogOut, Menu, Tag, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { signOut, useSession } from "@/lib/auth-client";
 import { useMe } from "@/lib/useMe";
 import { AuthModal } from "./AuthModal";
+import { JupiterLogo } from "./JupiterLogo";
 
 interface NavLink {
   to: string;
@@ -47,9 +48,7 @@ export function Navbar() {
       <div className="mx-auto flex h-14 max-w-[1600px] items-center gap-4 px-4 lg:gap-6 lg:px-6">
         {/* Logo */}
         <Link to="/" className="flex shrink-0 items-center gap-2.5" onClick={() => setMobileOpen(false)}>
-          <span className="flex h-8 w-8 items-center justify-center rounded-sm border border-primary/40 bg-primary/15 text-primary shadow-[0_0_20px_-2px_oklch(0.72_0.16_250/0.7)] animate-glow-pulse">
-            <Sparkles className="h-4 w-4" />
-          </span>
+          <JupiterLogo className="h-9 w-9" />
           <span className="font-display hidden text-[15px] font-semibold tracking-[0.18em] uppercase sm:inline">
             Pixovid
           </span>

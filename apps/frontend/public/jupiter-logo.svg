@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <radialGradient id="body" cx="38%" cy="32%" r="65%">
+      <stop offset="0%" stop-color="#f5e6c8"/>
+      <stop offset="35%" stop-color="#e8b86d"/>
+      <stop offset="70%" stop-color="#c47a3a"/>
+      <stop offset="100%" stop-color="#6b3a1f"/>
+    </radialGradient>
+    <linearGradient id="bands" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f0d4a8" stop-opacity="0.55"/>
+      <stop offset="25%" stop-color="#d4924a" stop-opacity="0.45"/>
+      <stop offset="50%" stop-color="#b86b32" stop-opacity="0.5"/>
+      <stop offset="75%" stop-color="#e8b060" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#5c3018" stop-opacity="0.5"/>
+    </linearGradient>
+    <linearGradient id="ring" x1="0" y1="0.5" x2="1" y2="0.5">
+      <stop offset="0%" stop-color="#7eb6ff" stop-opacity="0"/>
+      <stop offset="20%" stop-color="#9ec5ff" stop-opacity="0.85"/>
+      <stop offset="50%" stop-color="#e8f0ff" stop-opacity="0.95"/>
+      <stop offset="80%" stop-color="#6aa8ff" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#4a7fd4" stop-opacity="0"/>
+    </linearGradient>
+    <clipPath id="planet">
+      <circle cx="32" cy="30" r="16"/>
+    </clipPath>
+  </defs>
+  <ellipse cx="32" cy="34" rx="30" ry="9" stroke="url(#ring)" stroke-width="2.2" fill="none" opacity="0.7" transform="rotate(-18 32 34)"/>
+  <circle cx="32" cy="30" r="16" fill="url(#body)"/>
+  <g clip-path="url(#planet)">
+    <rect x="14" y="14" width="36" height="36" fill="url(#bands)"/>
+    <ellipse cx="40" cy="34" rx="3.2" ry="2" fill="#c45a3a" opacity="0.85" transform="rotate(-12 40 34)"/>
+    <ellipse cx="26" cy="24" rx="5" ry="3.5" fill="#fff8e8" opacity="0.28"/>
+  </g>
+  <ellipse cx="32" cy="34" rx="30" ry="9" stroke="url(#ring)" stroke-width="2.4" fill="none" transform="rotate(-18 32 34)" stroke-dasharray="48 100" stroke-dashoffset="22" opacity="0.95"/>
+  <circle cx="52" cy="22" r="1.35" fill="#d0e4ff" opacity="0.9"/>
+</svg>

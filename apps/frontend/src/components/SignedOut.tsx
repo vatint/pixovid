@@ -1,16 +1,17 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AuthModal } from "@/components/AuthModal";
+import { JupiterLogo } from "@/components/JupiterLogo";
 
 export function SignedOut() {
   const [open, setOpen] = useState(false);
   return (
     <div className="relative mx-auto flex max-w-3xl flex-col items-center px-4 py-20 text-center sm:py-28">
       <div className="pointer-events-none absolute left-1/2 top-10 -z-10 h-64 w-64 -translate-x-1/2 rounded-full bg-brand/20 blur-3xl" />
-      <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-1.5 text-sm text-muted-foreground shadow-sm backdrop-blur">
-        <Sparkles className="h-4 w-4 text-brand" />
+      <JupiterLogo className="mb-5 h-16 w-16" />
+      <div className="mb-5 inline-flex items-center gap-2 rounded-sm border border-primary/25 bg-primary/10 px-3.5 py-1.5 text-sm text-primary shadow-sm backdrop-blur">
         Sign in to unlock the studio
       </div>
       <h1 className="text-4xl font-semibold tracking-tight text-balance text-gradient sm:text-5xl">
