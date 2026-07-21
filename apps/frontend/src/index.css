@@ -3,39 +3,48 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Pixovid — Sci-fi / mission-control theme.
- * Deep space navy canvas, cyan primary, magenta accent, HUD-style surfaces.
- * No light theme.
+ * Pixovid — Sci-fi theme, blue spectrum only.
+ * Deep navy canvas → electric blue primary → ice / sky / royal accents.
+ * (Destructive red kept only for errors.)
  */
 :root,
 .dark {
-  --background: oklch(0.09 0.035 260);
-  --foreground: oklch(0.96 0.02 220);
-  --card: oklch(0.14 0.04 260);
-  --card-foreground: oklch(0.96 0.02 220);
-  --popover: oklch(0.12 0.04 260);
-  --popover-foreground: oklch(0.96 0.02 220);
-  /* Neon cyan CTAs */
-  --primary: oklch(0.82 0.14 210);
-  --primary-foreground: oklch(0.14 0.04 260);
-  --secondary: oklch(0.2 0.04 265);
-  --secondary-foreground: oklch(0.94 0.02 220);
-  --muted: oklch(0.18 0.035 265);
-  --muted-foreground: oklch(0.72 0.04 230);
-  --accent: oklch(0.22 0.05 270);
-  --accent-foreground: oklch(0.96 0.02 220);
+  /* Deep space navy */
+  --background: oklch(0.1 0.045 260);
+  --foreground: oklch(0.96 0.02 240);
+  /* Panel blue */
+  --card: oklch(0.15 0.05 255);
+  --card-foreground: oklch(0.96 0.02 240);
+  --popover: oklch(0.13 0.05 258);
+  --popover-foreground: oklch(0.96 0.02 240);
+  /* Electric blue CTAs */
+  --primary: oklch(0.72 0.16 250);
+  --primary-foreground: oklch(0.98 0.01 240);
+  /* Mid navy */
+  --secondary: oklch(0.22 0.055 258);
+  --secondary-foreground: oklch(0.94 0.025 240);
+  --muted: oklch(0.2 0.045 260);
+  --muted-foreground: oklch(0.72 0.05 245);
+  /* Soft blue hover wash */
+  --accent: oklch(0.24 0.06 255);
+  --accent-foreground: oklch(0.96 0.02 240);
   --destructive: oklch(0.62 0.22 25);
   --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.72 0.12 210 / 18%);
-  --input: oklch(0.72 0.12 210 / 22%);
-  --ring: oklch(0.82 0.14 210);
+  --border: oklch(0.7 0.12 250 / 22%);
+  --input: oklch(0.7 0.12 250 / 26%);
+  --ring: oklch(0.78 0.14 245);
   --radius: 0.35rem;
 
-  /* Brand: cyan + magenta */
-  --brand: oklch(0.82 0.14 210);
-  --brand-2: oklch(0.7 0.22 330);
-  --hud-line: oklch(0.82 0.14 210 / 25%);
-  --scanline: oklch(0.82 0.14 210 / 4%);
+  /* Brand blues: ice / sky + deeper royal */
+  --brand: oklch(0.82 0.12 235);
+  --brand-2: oklch(0.55 0.18 265);
+  --blue-ice: oklch(0.88 0.08 230);
+  --blue-sky: oklch(0.78 0.12 240);
+  --blue-electric: oklch(0.72 0.16 250);
+  --blue-royal: oklch(0.48 0.14 268);
+  --blue-navy: oklch(0.28 0.08 262);
+  --hud-line: oklch(0.75 0.14 250 / 28%);
+  --scanline: oklch(0.75 0.12 250 / 5%);
 }
 
 @theme inline {
@@ -60,6 +69,11 @@
   --color-ring: var(--ring);
   --color-brand: var(--brand);
   --color-brand-2: var(--brand-2);
+  --color-blue-ice: var(--blue-ice);
+  --color-blue-sky: var(--blue-sky);
+  --color-blue-electric: var(--blue-electric);
+  --color-blue-royal: var(--blue-royal);
+  --color-blue-navy: var(--blue-navy);
   --radius-sm: calc(var(--radius) - 2px);
   --radius-md: var(--radius);
   --radius-lg: calc(var(--radius) + 4px);
@@ -89,13 +103,13 @@
   body {
     min-height: 100vh;
     background-color: var(--color-background);
-    /* Deep space: grid + dual nebula glows (cyan + magenta). */
+    /* Deep blue space: grid + layered blue nebulas (ice → electric → royal). */
     background-image:
-      radial-gradient(ellipse 80rem 40rem at 50% -12rem, oklch(0.55 0.18 210 / 18%), transparent 60%),
-      radial-gradient(ellipse 50rem 40rem at 100% 100%, oklch(0.45 0.2 330 / 12%), transparent 55%),
-      radial-gradient(ellipse 40rem 30rem at 0% 80%, oklch(0.4 0.12 260 / 14%), transparent 50%),
-      linear-gradient(oklch(0.82 0.14 210 / 3.5%) 1px, transparent 1px),
-      linear-gradient(90deg, oklch(0.82 0.14 210 / 3.5%) 1px, transparent 1px);
+      radial-gradient(ellipse 80rem 40rem at 50% -12rem, oklch(0.55 0.16 250 / 22%), transparent 60%),
+      radial-gradient(ellipse 50rem 40rem at 100% 100%, oklch(0.4 0.14 268 / 18%), transparent 55%),
+      radial-gradient(ellipse 40rem 30rem at 0% 80%, oklch(0.45 0.12 240 / 16%), transparent 50%),
+      linear-gradient(oklch(0.7 0.12 250 / 4%) 1px, transparent 1px),
+      linear-gradient(90deg, oklch(0.7 0.12 250 / 4%) 1px, transparent 1px);
     background-size:
       auto,
       auto,
@@ -111,7 +125,6 @@
     text-rendering: optimizeLegibility;
   }
 
-  /* Subtle CRT scanlines over the whole app */
   body::before {
     content: "";
     pointer-events: none;
@@ -125,7 +138,7 @@
       var(--scanline) 2px,
       var(--scanline) 4px
     );
-    opacity: 0.45;
+    opacity: 0.4;
     mix-blend-mode: soft-light;
   }
 
@@ -134,33 +147,32 @@
   h3 {
     font-family: var(--font-display);
     letter-spacing: 0.04em;
-    text-transform: none;
   }
   h1 {
     letter-spacing: 0.06em;
   }
 
   ::selection {
-    background-color: oklch(0.82 0.14 210 / 40%);
-    color: oklch(0.99 0 0);
+    background-color: oklch(0.72 0.16 250 / 45%);
+    color: oklch(0.99 0.01 240);
   }
 
   * {
     scrollbar-width: thin;
-    scrollbar-color: oklch(0.82 0.14 210 / 35%) transparent;
+    scrollbar-color: oklch(0.72 0.14 250 / 40%) transparent;
   }
   *::-webkit-scrollbar {
     width: 8px;
     height: 8px;
   }
   *::-webkit-scrollbar-thumb {
-    background-color: oklch(0.82 0.14 210 / 28%);
+    background-color: oklch(0.72 0.14 250 / 32%);
     border-radius: 2px;
     border: 2px solid transparent;
     background-clip: padding-box;
   }
   *::-webkit-scrollbar-thumb:hover {
-    background-color: oklch(0.82 0.14 210 / 50%);
+    background-color: oklch(0.78 0.14 245 / 55%);
   }
 }
 
@@ -182,67 +194,67 @@
   .text-gradient {
     background: linear-gradient(
       180deg,
-      oklch(0.98 0.02 220),
-      oklch(0.72 0.08 250)
+      oklch(0.97 0.02 235),
+      oklch(0.7 0.08 255)
     );
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
 
-  /* Cyan → magenta hero highlight */
+  /* Ice → sky → electric blue hero highlight */
   .text-gradient-brand {
     background: linear-gradient(
       115deg,
-      oklch(0.95 0.04 210) 0%,
-      oklch(0.82 0.14 210) 40%,
-      oklch(0.72 0.2 320) 100%
+      oklch(0.92 0.06 230) 0%,
+      oklch(0.8 0.12 240) 35%,
+      oklch(0.72 0.16 250) 70%,
+      oklch(0.58 0.16 265) 100%
     );
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    filter: drop-shadow(0 0 18px oklch(0.82 0.14 210 / 35%));
+    filter: drop-shadow(0 0 18px oklch(0.72 0.16 250 / 40%));
   }
 
   .glass {
-    background-color: oklch(0.1 0.04 260 / 78%);
+    background-color: oklch(0.12 0.05 260 / 80%);
     backdrop-filter: blur(18px) saturate(1.35);
     -webkit-backdrop-filter: blur(18px) saturate(1.35);
-    border-color: oklch(0.82 0.14 210 / 16%);
+    border-color: oklch(0.72 0.14 250 / 18%);
     box-shadow:
-      inset 0 1px 0 oklch(0.9 0.1 210 / 12%),
-      0 0 0 1px oklch(0.82 0.14 210 / 6%);
+      inset 0 1px 0 oklch(0.88 0.08 235 / 14%),
+      0 0 0 1px oklch(0.72 0.14 250 / 8%);
   }
 
   .glow-card {
     box-shadow:
-      0 0 0 1px oklch(0.82 0.14 210 / 10%),
-      0 12px 40px -20px oklch(0 0 0 / 80%),
-      inset 0 1px 0 oklch(1 0 0 / 4%);
+      0 0 0 1px oklch(0.72 0.14 250 / 12%),
+      0 12px 40px -20px oklch(0.15 0.04 260 / 90%),
+      inset 0 1px 0 oklch(0.9 0.06 235 / 6%);
     transition:
       border-color 0.25s ease,
       box-shadow 0.25s ease,
       transform 0.25s ease;
   }
   .glow-card:hover {
-    border-color: oklch(0.82 0.14 210 / 45%);
+    border-color: oklch(0.78 0.14 245 / 50%);
     box-shadow:
-      0 0 0 1px oklch(0.82 0.14 210 / 28%),
-      0 0 32px -8px oklch(0.82 0.14 210 / 35%),
-      0 16px 48px -16px oklch(0.7 0.2 330 / 15%),
-      inset 0 1px 0 oklch(0.9 0.1 210 / 12%);
+      0 0 0 1px oklch(0.78 0.14 245 / 32%),
+      0 0 32px -8px oklch(0.72 0.16 250 / 40%),
+      0 16px 48px -16px oklch(0.48 0.14 268 / 25%),
+      inset 0 1px 0 oklch(0.9 0.08 235 / 14%);
   }
 
-  /* HUD panel: clipped corners via mask-like borders */
   .hud-panel {
     position: relative;
-    border: 1px solid oklch(0.82 0.14 210 / 22%);
+    border: 1px solid oklch(0.72 0.14 250 / 24%);
     background:
-      linear-gradient(135deg, oklch(0.82 0.14 210 / 6%) 0%, transparent 40%),
-      oklch(0.14 0.04 260 / 85%);
+      linear-gradient(135deg, oklch(0.75 0.12 245 / 8%) 0%, transparent 40%),
+      oklch(0.15 0.05 255 / 88%);
     box-shadow:
-      inset 0 0 40px oklch(0.5 0.1 260 / 20%),
-      0 0 24px -12px oklch(0.82 0.14 210 / 25%);
+      inset 0 0 40px oklch(0.4 0.1 260 / 25%),
+      0 0 24px -12px oklch(0.72 0.16 250 / 30%);
     clip-path: polygon(
       0 10px,
       10px 0,
@@ -258,9 +270,9 @@
   .shimmer {
     background: linear-gradient(
       90deg,
-      oklch(0.82 0.14 210 / 4%) 0%,
-      oklch(0.82 0.14 210 / 28%) 50%,
-      oklch(0.7 0.2 330 / 12%) 100%
+      oklch(0.72 0.14 250 / 5%) 0%,
+      oklch(0.82 0.12 235 / 30%) 40%,
+      oklch(0.55 0.16 265 / 18%) 100%
     );
     background-size: 200% 100%;
     animation: shimmer 1.6s ease-in-out infinite;
@@ -278,7 +290,6 @@
     animation: glow-pulse 3s ease-in-out infinite;
   }
 
-  /* Corner tick marks for HUD chrome */
   .hud-corners {
     position: relative;
   }
@@ -288,7 +299,7 @@
     position: absolute;
     width: 12px;
     height: 12px;
-    border-color: oklch(0.82 0.14 210 / 55%);
+    border-color: oklch(0.75 0.14 248 / 55%);
     border-style: solid;
     pointer-events: none;
   }
@@ -337,9 +348,9 @@
 @keyframes glow-pulse {
   0%,
   100% {
-    box-shadow: 0 0 12px oklch(0.82 0.14 210 / 25%);
+    box-shadow: 0 0 12px oklch(0.72 0.16 250 / 30%);
   }
   50% {
-    box-shadow: 0 0 28px oklch(0.82 0.14 210 / 45%);
+    box-shadow: 0 0 28px oklch(0.78 0.14 245 / 50%);
   }
 }

@@ -203,13 +203,13 @@ function Clip({ src, className }: { src: string; className?: string }) {
 function FeaturedCard({ clip }: { clip: ShowcaseClip }) {
   return (
     <div className="group w-[300px] shrink-0 snap-start sm:w-[440px] lg:w-[520px]">
-      <div className="relative overflow-hidden rounded-sm border border-primary/20 bg-card shadow-[0_0_24px_-12px_oklch(0.82_0.14_210/0.25)]">
+      <div className="relative overflow-hidden rounded-sm border border-primary/20 bg-card shadow-[0_0_24px_-12px_oklch(0.72_0.16_250/0.25)]">
         <Clip
           src={clip.src}
           className="aspect-video h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
         />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
-        <span className="font-hud absolute bottom-3 right-3 rounded-sm bg-primary px-2 py-0.5 text-[10px] font-extrabold tracking-wider text-primary-foreground shadow-[0_0_12px_oklch(0.82_0.14_210/0.45)]">
+        <span className="font-hud absolute bottom-3 right-3 rounded-sm bg-primary px-2 py-0.5 text-[10px] font-extrabold tracking-wider text-primary-foreground shadow-[0_0_12px_oklch(0.72_0.16_250/0.45)]">
           4K
         </span>
         <span className="font-hud absolute left-3 top-3 rounded-sm border border-primary/30 bg-background/70 px-2.5 py-1 text-[10px] font-medium tracking-wider text-primary backdrop-blur">
@@ -226,7 +226,7 @@ function FeaturedCard({ clip }: { clip: ShowcaseClip }) {
 
 function MasonryTile({ clip }: { clip: ShowcaseClip }) {
   return (
-    <div className="group relative mb-4 break-inside-avoid overflow-hidden rounded-sm border border-primary/15 bg-card shadow-lg shadow-black/40 transition-all duration-300 hover:border-primary/40 hover:shadow-[0_16px_48px_-20px_oklch(0.82_0.14_210/0.35)]">
+    <div className="group relative mb-4 break-inside-avoid overflow-hidden rounded-sm border border-primary/15 bg-card shadow-lg shadow-black/40 transition-all duration-300 hover:border-primary/40 hover:shadow-[0_16px_48px_-20px_oklch(0.72_0.16_250/0.35)]">
       <div className={`relative w-full ${ASPECT_CLASS[clip.aspect]}`}>
         <Clip
           src={clip.src}
@@ -237,7 +237,7 @@ function MasonryTile({ clip }: { clip: ShowcaseClip }) {
         <span className="font-hud absolute left-3 top-3 rounded-sm border border-primary/30 bg-background/70 px-2.5 py-1 text-[10px] font-medium tracking-wider text-primary backdrop-blur">
           {clip.model}
         </span>
-        <span className="font-hud absolute right-3 top-3 rounded-sm bg-primary px-2 py-0.5 text-[10px] font-bold tracking-wider text-primary-foreground shadow-[0_0_10px_oklch(0.82_0.14_210/0.4)]">
+        <span className="font-hud absolute right-3 top-3 rounded-sm bg-primary px-2 py-0.5 text-[10px] font-bold tracking-wider text-primary-foreground shadow-[0_0_10px_oklch(0.72_0.16_250/0.4)]">
           {clip.category}
         </span>
 
@@ -292,7 +292,7 @@ function TemplateBanner({ banner, cta }: { banner: Banner; cta: React.ReactNode 
       {/* Localized scrim only in the bottom-left corner — keeps most of the video bright. */}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-background/90 via-background/20 to-transparent" />
 
-      <span className="font-hud absolute right-4 top-4 -skew-x-6 rounded-sm bg-primary px-2.5 py-0.5 text-base font-extrabold tracking-wider text-primary-foreground shadow-[0_0_20px_oklch(0.82_0.14_210/0.5)] sm:right-6 sm:top-6 sm:text-xl">
+      <span className="font-hud absolute right-4 top-4 -skew-x-6 rounded-sm bg-primary px-2.5 py-0.5 text-base font-extrabold tracking-wider text-primary-foreground shadow-[0_0_20px_oklch(0.72_0.16_250/0.5)] sm:right-6 sm:top-6 sm:text-xl">
         4K
       </span>
 
@@ -300,7 +300,7 @@ function TemplateBanner({ banner, cta }: { banner: Banner; cta: React.ReactNode 
         <span className="font-hud rounded-sm border border-primary/30 bg-background/70 px-3 py-1 text-[10px] font-bold tracking-wider text-primary backdrop-blur sm:text-[11px]">
           {banner.kicker}
         </span>
-        <h3 className="font-display mt-2 text-3xl font-extrabold uppercase tracking-wider text-primary drop-shadow-[0_0_24px_oklch(0.82_0.14_210/0.55)] sm:text-5xl">
+        <h3 className="font-display mt-2 text-3xl font-extrabold uppercase tracking-wider text-primary drop-shadow-[0_0_24px_oklch(0.72_0.16_250/0.55)] sm:text-5xl">
           {banner.title}
         </h3>
         <p className="mt-1 text-sm font-bold uppercase tracking-wide text-white/90 drop-shadow sm:text-base">
@@ -380,7 +380,7 @@ export function LandingPage() {
     <div className="overflow-hidden">
       {/* Compact hero */}
       <section className="animate-fade-up mx-auto max-w-[1600px] px-4 pt-14 pb-10 lg:px-6">
-        <div className="font-hud mb-5 inline-flex items-center gap-2 rounded-sm border border-primary/30 bg-primary/10 px-3.5 py-1.5 text-[11px] tracking-wider text-primary shadow-[0_0_20px_-8px_oklch(0.82_0.14_210/0.6)]">
+        <div className="font-hud mb-5 inline-flex items-center gap-2 rounded-sm border border-primary/30 bg-primary/10 px-3.5 py-1.5 text-[11px] tracking-wider text-primary shadow-[0_0_20px_-8px_oklch(0.72_0.16_250/0.6)]">
           <Sparkles className="h-3.5 w-3.5" />
           LIVE SIGNAL // REAL CLIPS GENERATED IN PIXOVID
         </div>
@@ -443,7 +443,7 @@ export function LandingPage() {
                 }}
                 className="glow-card group rounded-sm border border-primary/15 bg-card/60 p-5"
               >
-                <span className="flex h-10 w-10 items-center justify-center rounded-sm border border-primary/25 bg-primary/10 text-primary shadow-[0_0_16px_-6px_oklch(0.82_0.14_210/0.5)] transition-transform group-hover:scale-105">
+                <span className="flex h-10 w-10 items-center justify-center rounded-sm border border-primary/25 bg-primary/10 text-primary shadow-[0_0_16px_-6px_oklch(0.72_0.16_250/0.5)] transition-transform group-hover:scale-105">
                   <Icon className="h-5 w-5" />
                 </span>
                 <h3 className="font-display mt-4 text-base font-semibold tracking-wide">
@@ -519,8 +519,8 @@ export function LandingPage() {
 
       {/* Closing CTA */}
       <section className="mx-auto max-w-[1600px] px-4 pb-24 lg:px-6">
-        <div className="hud-corners relative overflow-hidden rounded-lg border border-primary/20 bg-card p-10 text-center shadow-[0_0_48px_-16px_oklch(0.82_0.14_210/0.3)]">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,oklch(0.82_0.14_210/0.14),transparent_55%)]" />
+        <div className="hud-corners relative overflow-hidden rounded-lg border border-primary/20 bg-card p-10 text-center shadow-[0_0_48px_-16px_oklch(0.72_0.16_250/0.3)]">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,oklch(0.72_0.16_250/0.14),transparent_55%)]" />
           <div className="relative flex flex-col items-center justify-center gap-4">
             <p className="font-hud text-[10px] text-primary/80">TRANSMISSION READY</p>
             <h2 className="font-display text-2xl font-semibold tracking-wider sm:text-3xl">

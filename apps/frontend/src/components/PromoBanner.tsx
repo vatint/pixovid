@@ -15,7 +15,7 @@ export function PromoBanner() {
   if (dismissed) return null;
 
   return (
-    <div className="relative z-50 flex items-center justify-center border-b border-primary/30 bg-gradient-to-r from-primary via-primary to-brand-2 px-10 py-2 text-primary-foreground shadow-[0_0_24px_oklch(0.82_0.14_210/0.35)]">
+    <div className="relative z-50 flex items-center justify-center border-b border-primary/30 bg-gradient-to-r from-blue-royal via-primary to-brand px-10 py-2 text-primary-foreground shadow-[0_0_24px_oklch(0.72_0.16_250/0.4)]">
       <Link
         to="/billing"
         className="group font-hud flex items-center gap-3 text-center text-xs font-semibold tracking-[0.14em] sm:text-sm"

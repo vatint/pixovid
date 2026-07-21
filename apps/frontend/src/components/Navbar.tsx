@@ -47,7 +47,7 @@ export function Navbar() {
       <div className="mx-auto flex h-14 max-w-[1600px] items-center gap-4 px-4 lg:gap-6 lg:px-6">
         {/* Logo */}
         <Link to="/" className="flex shrink-0 items-center gap-2.5" onClick={() => setMobileOpen(false)}>
-          <span className="flex h-8 w-8 items-center justify-center rounded-sm border border-primary/40 bg-primary/15 text-primary shadow-[0_0_20px_-2px_oklch(0.82_0.14_210/0.65)] animate-glow-pulse">
+          <span className="flex h-8 w-8 items-center justify-center rounded-sm border border-primary/40 bg-primary/15 text-primary shadow-[0_0_20px_-2px_oklch(0.72_0.16_250/0.7)] animate-glow-pulse">
             <Sparkles className="h-4 w-4" />
           </span>
           <span className="font-display hidden text-[15px] font-semibold tracking-[0.18em] uppercase sm:inline">
@@ -62,7 +62,7 @@ export function Navbar() {
             className={cn(
               "font-hud shrink-0 rounded-sm px-2.5 py-1.5 text-[11px] font-medium transition-colors",
               isActive("/")
-                ? "bg-primary/10 text-primary shadow-[inset_0_-1px_0_0_oklch(0.82_0.14_210)]"
+                ? "bg-primary/10 text-primary shadow-[inset_0_-1px_0_0_oklch(0.72_0.16_250)]"
                 : "text-muted-foreground hover:text-primary",
             )}
           >
@@ -75,13 +75,13 @@ export function Navbar() {
               className={cn(
                 "font-hud flex shrink-0 items-center gap-1.5 rounded-sm px-2.5 py-1.5 text-[11px] font-medium transition-colors",
                 isActive(to)
-                  ? "bg-primary/10 text-primary shadow-[inset_0_-1px_0_0_oklch(0.82_0.14_210)]"
+                  ? "bg-primary/10 text-primary shadow-[inset_0_-1px_0_0_oklch(0.72_0.16_250)]"
                   : "text-muted-foreground hover:text-primary",
               )}
             >
               <span className="whitespace-nowrap">{label}</span>
               {badge && (
-                <span className="rounded-sm bg-brand-2 px-1.5 py-0.5 text-[9px] font-bold leading-none tracking-wider text-white shadow-[0_0_10px_oklch(0.7_0.22_330/0.5)]">
+                <span className="rounded-sm bg-brand-2 px-1.5 py-0.5 text-[9px] font-bold leading-none tracking-wider text-white shadow-[0_0_10px_oklch(0.55_0.18_265/0.55)]">
                   {badge}
                 </span>
               )}
@@ -98,7 +98,7 @@ export function Navbar() {
                 title="Credits & billing"
                 className={cn(
                   "font-hud flex items-center gap-1.5 rounded-sm border border-primary/25 bg-primary/5 px-3 py-1.5 text-[11px] font-medium transition-colors hover:bg-primary/10 hover:border-primary/40",
-                  location.pathname === "/billing" && "border-primary/50 text-primary shadow-[0_0_12px_-4px_oklch(0.82_0.14_210/0.5)]",
+                  location.pathname === "/billing" && "border-primary/50 text-primary shadow-[0_0_12px_-4px_oklch(0.72_0.16_250/0.55)]",
                 )}
               >
                 <Coins className="h-4 w-4 text-primary" />

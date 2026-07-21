@@ -26,7 +26,7 @@ export function Footer() {
       <div className="mx-auto grid max-w-[1600px] gap-10 px-4 py-12 lg:grid-cols-[1.4fr_1fr_1fr_1fr] lg:px-6">
         <div>
           <Link to="/" className="flex items-center gap-2.5">
-            <span className="flex h-8 w-8 items-center justify-center rounded-sm border border-primary/40 bg-primary/15 text-primary shadow-[0_0_16px_-4px_oklch(0.82_0.14_210/0.55)]">
+            <span className="flex h-8 w-8 items-center justify-center rounded-sm border border-primary/40 bg-primary/15 text-primary shadow-[0_0_16px_-4px_oklch(0.72_0.16_250/0.55)]">
               <Sparkles className="h-4 w-4" />
             </span>
             <span className="font-display text-[15px] font-semibold tracking-[0.18em] uppercase">

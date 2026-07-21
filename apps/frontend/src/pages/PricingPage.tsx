@@ -144,12 +144,12 @@ export function PricingPage() {
               className={cn(
                 "relative flex flex-col rounded-sm border bg-card p-6 shadow-xl shadow-black/40",
                 featured
-                  ? "border-primary/45 shadow-[0_0_40px_-12px_oklch(0.82_0.14_210/0.4)] ring-1 ring-primary/30"
+                  ? "border-primary/45 shadow-[0_0_40px_-12px_oklch(0.72_0.16_250/0.4)] ring-1 ring-primary/30"
                   : "border-primary/15",
               )}
             >
               {featured && (
-                <span className="font-hud absolute -top-3 left-1/2 -translate-x-1/2 rounded-sm bg-primary px-3 py-0.5 text-[10px] font-bold tracking-wider text-primary-foreground shadow-[0_0_16px_oklch(0.82_0.14_210/0.5)]">
+                <span className="font-hud absolute -top-3 left-1/2 -translate-x-1/2 rounded-sm bg-primary px-3 py-0.5 text-[10px] font-bold tracking-wider text-primary-foreground shadow-[0_0_16px_oklch(0.72_0.16_250/0.5)]">
                   BEST VALUE
                 </span>
               )}
