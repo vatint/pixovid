@@ -123,7 +123,7 @@ export function Navbar() {
           ) : (
             <>
               <Link
-                to="/billing"
+                to="/pricing"
                 className="relative hidden items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-sm font-medium text-foreground transition-colors hover:bg-white/[0.08] sm:flex"
               >
                 <Tag className="h-3.5 w-3.5" />

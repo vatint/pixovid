@@ -34,7 +34,9 @@ creditsRouter.get("/", requireAuth, async (req: AuthedRequest, res) => {
 });
 
 // Available packs + per-action prices + checkout config for the frontend.
-creditsRouter.get("/packs", requireAuth, async (_req, res) => {
+// Public (no auth) so the marketing /pricing page works logged-out.
+// Checkout and balance endpoints remain auth-gated.
+creditsRouter.get("/packs", async (_req, res) => {
   res.json({
     currency: "INR",
     razorpayConfigured: isRazorpayConfigured(),
@@ -54,6 +56,8 @@ creditsRouter.get("/packs", requireAuth, async (_req, res) => {
       image: actionCost("image"),
       template_render: actionCost("template_render"),
     },
+    /** One-time signup grant (see auth.ts WELCOME_CREDITS). */
+    welcomeCredits: 120,
   });
 });
 

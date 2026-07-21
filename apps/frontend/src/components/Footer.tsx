@@ -9,7 +9,8 @@ const PRODUCT_LINKS = [
   { to: "/face-swap", label: "Face Swap" },
   { to: "/user/templates", label: "Templates" },
   { to: "/user/avatar", label: "Avatar" },
-  { to: "/billing", label: "Pricing" },
+  { to: "/pricing", label: "Pricing" },
+  { to: "/billing", label: "Billing" },
 ];
 
 const LEGAL_LINKS = [

@@ -226,6 +226,32 @@ export interface CreditPacksResponse {
   razorpayKeyId: string | null;
   packs: CreditPack[];
   actionCosts: { video: number; image: number; template_render: number };
+  /** Present on public packs payload; one-time signup grant. */
+  welcomeCredits?: number;
+}
+
+/** API failure with HTTP status (used for 402 insufficient-credits UX). */
+export class ApiError extends Error {
+  constructor(
+    message: string,
+    public status: number,
+  ) {
+    super(message);
+    this.name = "ApiError";
+  }
+}
+
+/** True when the user needs to buy credits to continue. */
+export function isInsufficientCreditsError(err: unknown): boolean {
+  if (err instanceof ApiError && err.status === 402) return true;
+  return err instanceof Error && /not enough credits/i.test(err.message);
+}
+
+/** Parse "costs N credits" from backend 402 copy when present. */
+export function parseRequiredCredits(err: unknown): number | null {
+  if (!(err instanceof Error)) return null;
+  const m = err.message.match(/costs?\s+(\d+)\s+credits/i);
+  return m ? Number(m[1]) : null;
 }
 
 export interface CreditBalance {
@@ -254,7 +280,7 @@ async function handle<T>(res: Response): Promise<T> {
         : body.error
           ? JSON.stringify(body.error)
           : `Request failed (${res.status})`;
-    throw new Error(message);
+    throw new ApiError(message, res.status);
   }
   if (res.status === 204) return undefined as T;
   return res.json() as Promise<T>;

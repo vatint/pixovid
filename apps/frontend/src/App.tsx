@@ -12,6 +12,7 @@ import { TemplatesPage } from "@/pages/TemplatesPage";
 import { GenerationPage } from "@/pages/GenerationPage";
 import { AdminTemplateCreatePage } from "@/pages/AdminTemplateCreatePage";
 import { BillingPage } from "@/pages/BillingPage";
+import { PricingPage } from "@/pages/PricingPage";
 import { PrivacyPage } from "@/pages/PrivacyPage";
 import { RefundPage } from "@/pages/RefundPage";
 import { TermsPage } from "@/pages/TermsPage";
@@ -32,6 +33,7 @@ export default function App() {
             <Route path="/generation/:id" element={<GenerationPage />} />
             <Route path="/user/avatar" element={<AvatarPage />} />
             <Route path="/billing" element={<BillingPage />} />
+            <Route path="/pricing" element={<PricingPage />} />
             <Route
               path="/admin/template/create"
               element={<AdminTemplateCreatePage />}

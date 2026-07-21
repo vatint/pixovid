@@ -18,6 +18,8 @@ import {
 } from "@/components/ui/select";
 import {
   fetchAvatars,
+  isInsufficientCreditsError,
+  parseRequiredCredits,
   renderTemplate as renderTemplateApi,
   type Avatar,
   type Template,
@@ -25,6 +27,7 @@ import {
 } from "@/lib/api";
 import { refreshCredits } from "@/lib/useMe";
 import { useActionCosts } from "@/lib/useActionCosts";
+import { InsufficientCreditsModal } from "@/components/InsufficientCreditsModal";
 
 interface Props {
   template: Template;
@@ -39,6 +42,8 @@ export function TemplateRenderDialog({ template, open, onOpenChange, onRendered 
   const [selected, setSelected] = useState<string[]>([]);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [creditsOpen, setCreditsOpen] = useState(false);
+  const [creditsRequired, setCreditsRequired] = useState<number | null>(null);
   const costs = useActionCosts();
 
   useEffect(() => {
@@ -77,6 +82,10 @@ export function TemplateRenderDialog({ template, open, onOpenChange, onRendered 
       // progress page where they can watch each block generate.
       navigate(`/generation/${render.id}`);
     } catch (err) {
+      if (isInsufficientCreditsError(err)) {
+        setCreditsRequired(parseRequiredCredits(err) ?? costs?.template_render ?? null);
+        setCreditsOpen(true);
+      }
       setError(err instanceof Error ? err.message : "Failed to generate video");
     } finally {
       setSubmitting(false);
@@ -85,6 +94,12 @@ export function TemplateRenderDialog({ template, open, onOpenChange, onRendered 
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
+      <InsufficientCreditsModal
+        open={creditsOpen}
+        onOpenChange={setCreditsOpen}
+        required={creditsRequired}
+        action="template_render"
+      />
       <DialogContent className="max-w-6xl gap-0 overflow-hidden p-0">
         <DialogHeader className="sr-only">
           <DialogTitle>Generate {template.name}</DialogTitle>

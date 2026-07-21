@@ -18,10 +18,13 @@ import {
   ALLOWED_DURATIONS,
   createVideo,
   fetchModels,
+  isInsufficientCreditsError,
   modelsForDuration,
+  parseRequiredCredits,
   type Video,
   type VideoModel,
 } from "@/lib/api";
+import { InsufficientCreditsModal } from "@/components/InsufficientCreditsModal";
 
 const FALLBACK_RESOLUTIONS = ["480p", "720p", "1080p"];
 const FALLBACK_ASPECT_RATIOS = ["16:9", "9:16", "1:1", "4:3", "3:4"];
@@ -46,6 +49,8 @@ export function TextToVideoForm({ onCreated }: Props) {
 
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [creditsOpen, setCreditsOpen] = useState(false);
+  const [creditsRequired, setCreditsRequired] = useState<number | null>(null);
 
   const costs = useActionCosts();
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -106,6 +111,10 @@ export function TextToVideoForm({ onCreated }: Props) {
       onCreated(video);
       setPrompt("");
     } catch (err) {
+      if (isInsufficientCreditsError(err)) {
+        setCreditsRequired(parseRequiredCredits(err) ?? costs?.video ?? null);
+        setCreditsOpen(true);
+      }
       setError(err instanceof Error ? err.message : "Failed to generate video");
     } finally {
       setSubmitting(false);
@@ -114,6 +123,12 @@ export function TextToVideoForm({ onCreated }: Props) {
 
   return (
     <form onSubmit={handleSubmit} className="flex w-full flex-col gap-3">
+      <InsufficientCreditsModal
+        open={creditsOpen}
+        onOpenChange={setCreditsOpen}
+        required={creditsRequired}
+        action="video"
+      />
       {/* Preset / mode header card */}
       <div className="relative h-28 overflow-hidden rounded-xl border border-white/10">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/25 via-card to-card" />

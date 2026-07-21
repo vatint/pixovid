@@ -11,9 +11,17 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { createImage, fetchImageModels, type GenerationModel, type Image } from "@/lib/api";
+import {
+  createImage,
+  fetchImageModels,
+  isInsufficientCreditsError,
+  parseRequiredCredits,
+  type GenerationModel,
+  type Image,
+} from "@/lib/api";
 import { refreshCredits } from "@/lib/useMe";
 import { useActionCosts } from "@/lib/useActionCosts";
+import { InsufficientCreditsModal } from "@/components/InsufficientCreditsModal";
 
 const FALLBACK_RESOLUTIONS = ["512", "1K", "2K", "4K"];
 const FALLBACK_ASPECT_RATIOS = ["1:1", "16:9", "9:16", "4:3", "3:4"];
@@ -34,6 +42,8 @@ export function TextToImageForm({ onCreated }: Props) {
 
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [creditsOpen, setCreditsOpen] = useState(false);
+  const [creditsRequired, setCreditsRequired] = useState<number | null>(null);
 
   const costs = useActionCosts();
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -76,6 +86,10 @@ export function TextToImageForm({ onCreated }: Props) {
       onCreated(image);
       setPrompt("");
     } catch (err) {
+      if (isInsufficientCreditsError(err)) {
+        setCreditsRequired(parseRequiredCredits(err) ?? costs?.image ?? null);
+        setCreditsOpen(true);
+      }
       setError(err instanceof Error ? err.message : "Failed to generate image");
     } finally {
       setSubmitting(false);
@@ -84,6 +98,12 @@ export function TextToImageForm({ onCreated }: Props) {
 
   return (
     <form onSubmit={handleSubmit} className="flex w-full flex-col gap-3">
+      <InsufficientCreditsModal
+        open={creditsOpen}
+        onOpenChange={setCreditsOpen}
+        required={creditsRequired}
+        action="image"
+      />
       {/* Preset / mode header card */}
       <div className="relative h-28 overflow-hidden rounded-xl border border-white/10">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/25 via-card to-card" />

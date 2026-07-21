@@ -149,6 +149,13 @@ See:
 
 Without `OPENROUTER_API_KEY`, generation endpoints error; without Google OAuth credentials, Google sign-in stays disabled. Email/password auth still works.
 
+## Monetization (Phase 0 / 1)
+
+Concrete eng checklist (effort-ordered, acceptance criteria):  
+[`docs/MONETIZATION-PHASE-0-1.md`](./docs/MONETIZATION-PHASE-0-1.md)
+
+Public pricing UI: `/pricing` · Checkout: `/billing` (Razorpay)
+
 ## Credits
 
 - Original product & open source: [codes30/pixovid](https://github.com/codes30/pixovid)  
